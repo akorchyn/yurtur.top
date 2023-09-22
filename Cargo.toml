@@ -1,0 +1,9 @@
+[workspace]
+resolver = "2"
+
+[workspace.package]
+name = "yurtur.top"
+version = "0.1.0"
+authors = ["yurtur <artur.yurii.korchynskyi@gmail.com>"]
+edition = "2021"
+repository = "https://github.com/akorchyn/yurtur.top"

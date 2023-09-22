@@ -152,7 +152,6 @@
 
           # Extra inputs can be added here
           nativeBuildInputs = with pkgs; [
-            sqlite
             lldb
             # Mold Linker for faster builds (only on Linux)
             (lib.optionals pkgs.stdenv.isLinux pkgs.mold)
