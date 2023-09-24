@@ -5,12 +5,15 @@ pub fn Header(cx: Scope) -> Element {
             header {
                 class: "flex justify-between items-center bg-main p-4 w-full sticky top-0",
 
-            h1 {
-                class: "text-2xl text-white font-bold ml-8",
-                "Yurtur"
-                span {
-                    class: "ml-1 text-xl font-normal",
-                    " | Your turn to innovations"
+            a {
+                href: "/",
+                h1 {
+                    class: "text-2xl text-white font-bold ml-8",
+                    "Yurtur"
+                    span {
+                        class: "ml-1 text-xl font-normal",
+                        " | Your turn to innovations"
+                    }
                 }
             }
 
