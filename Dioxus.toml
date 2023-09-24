@@ -1,7 +1,8 @@
 [application]
 name = "yurtur-top"
 default_platform = "web"
-out_dir = "dist"
+out_dir = "docs"
+base_path = "yurtur.top"
 asset_dir = "public"
 
 [web.app]
