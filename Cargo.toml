@@ -1,9 +1,25 @@
-[workspace]
-resolver = "2"
-
-[workspace.package]
-name = "yurtur.top"
+[package]
+name = "yurtur-top"
+authors = ["akorchyn <artur.yurii.korchynskyi@gmail.com>"]
 version = "0.1.0"
-authors = ["yurtur <artur.yurii.korchynskyi@gmail.com>"]
+repository = "https://github.com/akorchyn/yurtur-top"
 edition = "2021"
-repository = "https://github.com/akorchyn/yurtur.top"
+
+[dependencies]
+dioxus = "0.4"
+dioxus-web = "0.4"
+dioxus-free-icons = { version = "0.7", default-features = false, features = [
+    "font-awesome-brands",
+] }
+chrono = "0.4"
+
+[features]
+default = []
+
+[profile.release]
+# Configure release to optimize for size
+strip = true
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"

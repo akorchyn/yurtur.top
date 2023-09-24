@@ -153,6 +153,10 @@
           # Extra inputs can be added here
           nativeBuildInputs = with pkgs; [
             lldb
+            openssl
+            pkg-config
+            llvm
+            nodejs-18_x
             # Mold Linker for faster builds (only on Linux)
             (lib.optionals pkgs.stdenv.isLinux pkgs.mold)
             (lib.optionals pkgs.stdenv.isDarwin pkgs.darwin.apple_sdk.frameworks.Security)
