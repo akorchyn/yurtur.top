@@ -13,6 +13,21 @@ dioxus-free-icons = { version = "0.7", default-features = false, features = [
 ] }
 chrono = "0.4"
 
+# for canvas
+web-sys = { version = "0.3", features = [
+    'CanvasRenderingContext2d',
+    'Document',
+    'Element',
+    'HtmlCanvasElement',
+    'Window',
+    'EventTarget',
+    'ImageData',
+    'console',
+] }
+wasm-bindgen = "0.2"
+async-std = "1.12.0"
+js-sys = "0.3"
+
 [features]
 default = []
 
