@@ -1,24 +1,23 @@
 use std::{cell::Cell, f64::consts::PI, rc::Rc, time::Duration};
 
 use dioxus::prelude::*;
+use image::{ImageBuffer, Rgba};
 use wasm_bindgen::{prelude::Closure, JsCast, JsValue};
 
 #[derive(PartialEq, Props, Clone)]
 pub struct Props {
-    pub text: String,
     pub scale: f64,
     pub size: u32,
     pub x_offset: i32,
     pub y_offset: i32,
+    pub image: ImageBuffer<Rgba<u8>, Vec<u8>>,
 }
 
-pub fn ParticleText(cx: Scope<Props>) -> Element {
-    let id = use_state(cx, || format!("particle-text-{}", cx.props.text));
-
-    use_effect(cx, (cx.props, id), |(props, id)| {
+pub fn ParticleImage(cx: Scope<Props>) -> Element {
+    use_effect(cx, (cx.props,), |(props,)| {
         to_owned![props];
         async move {
-            let (window, canvas, context) = start_render_loop(id.as_str());
+            let (window, canvas, context) = start_render_loop();
             let mut particles = vec![];
             let mouse: Rc<_> = Rc::new(Cell::new(Mouse::new(
                 f64::INFINITY,
@@ -46,31 +45,33 @@ pub fn ParticleText(cx: Scope<Props>) -> Element {
                 closure
             };
 
-            context.set_font("bold 20px ui-sans-serif");
-            context.set_fill_style(&JsValue::from_str("#f08cae"));
-            for (i, line) in props.text.split('\n').enumerate() {
-                context.fill_text(line, 0.0, 30.0 * (i + 1) as f64).unwrap();
-            }
-            let data = context.get_image_data(0., 0., 500., 500.).unwrap();
-
-            for y in 0..data.height() {
-                for x in 0..data.width() {
-                    let index = (y * data.width() + x) * 4 + 3;
-
-                    if data.data()[index as usize] > 0 {
+            let mut skip = 0;
+            for y in 0..props.image.height() {
+                for x in 0..props.image.width() {
+                    if skip > 0 {
+                        skip -= 1;
+                        continue;
+                    }
+                    if props.image.get_pixel(x, y).0[0] < 127 {
                         let x = (x as i32 + props.x_offset) as f64;
                         let y = (y as i32 + props.y_offset) as f64;
                         particles.push(Particle::new(x, y, props.scale, props.size));
+                        skip = 10;
                     }
                 }
             }
+            render_loop(&context, &particles);
             loop {
-                particles
-                    .iter_mut()
-                    .for_each(|particle: &mut Particle| particle.update(mouse.get()));
-                context.clear_rect(0., 0., canvas.width() as f64, canvas.height() as f64);
+                let mut any = false;
+                // Update particles
+                for particle in particles.iter_mut() {
+                    any |= particle.update(mouse.get());
+                }
 
-                render_loop(&context, &particles);
+                if any {
+                    context.clear_rect(0., 0., canvas.width() as f64, canvas.height() as f64);
+                    render_loop(&context, &particles);
+                }
                 async_std::task::sleep(Duration::from_millis(10)).await;
             }
         }
@@ -78,16 +79,14 @@ pub fn ParticleText(cx: Scope<Props>) -> Element {
 
     let rsx = rsx! {
         canvas {
-            class: "container",
-            id: id.get().as_str(),
+            class: "w-full h-full",
+            id: "particle-image",
         }
     };
     cx.render(rsx)
 }
 
-fn start_render_loop(
-    id: &str,
-) -> (
+fn start_render_loop() -> (
     web_sys::Window,
     web_sys::HtmlCanvasElement,
     web_sys::CanvasRenderingContext2d,
@@ -95,7 +94,7 @@ fn start_render_loop(
     let window = web_sys::window().expect("global window does not exists");
     let document = window.document().expect("expecting a document on window");
     let canvas = document
-        .get_element_by_id(id)
+        .get_element_by_id("particle-image")
         .expect("expecting a canvas in the document")
         .dyn_into::<web_sys::HtmlCanvasElement>()
         .unwrap();
@@ -122,7 +121,7 @@ fn render_loop(context: &web_sys::CanvasRenderingContext2d, particles: &Vec<Part
             let dx = particle.x - other_particle.x;
             let dy = particle.y - other_particle.y;
             let distance = (dx * dx + dy * dy).sqrt();
-            let threshold = particle.scale * 3.;
+            let threshold = particle.scale * 12.;
             if distance < threshold {
                 let opacity = 1. - distance / threshold;
 
@@ -150,7 +149,7 @@ impl Mouse {
         Self {
             x,
             y,
-            radius: scale * 5.,
+            radius: scale * 25.,
         }
     }
 }
@@ -190,7 +189,7 @@ impl Particle {
         context.fill();
     }
 
-    fn update(&mut self, mouse: Mouse) {
+    fn update(&mut self, mouse: Mouse) -> bool {
         let dx = mouse.x - self.x;
         let dy: f64 = mouse.y - self.y;
         let distance = (dx * dx + dy * dy).sqrt();
@@ -201,14 +200,17 @@ impl Particle {
         let direction_x = force_direction_x * force * self.density;
         let direction_y = force_direction_y * force * self.density;
 
-        if distance < 5. * self.scale {
+        if distance < 20. * self.scale {
             self.x -= direction_x;
             self.y -= direction_y;
+            true
         } else {
             let dx = self.x - self.base_x;
             let dy = self.y - self.base_y;
             self.x -= dx / 10.;
             self.y -= dy / 10.;
+
+            !(dx.abs() < 1. && dy.abs() < 1.)
         }
     }
 }
