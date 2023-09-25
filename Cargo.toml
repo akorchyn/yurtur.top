@@ -33,11 +33,3 @@ image = "0.24"
 
 [features]
 default = []
-
-[profile.release]
-# Configure release to optimize for size
-strip = true
-opt-level = "z"
-lto = true
-codegen-units = 1
-panic = "abort"
