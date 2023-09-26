@@ -44,7 +44,6 @@ pub fn ParticleImage(cx: Scope<Props>) -> Element {
                     .unwrap();
                 closure
             };
-
             let mut skip = 0;
             for y in 0..props.image.height() {
                 for x in 0..props.image.width() {
@@ -56,7 +55,7 @@ pub fn ParticleImage(cx: Scope<Props>) -> Element {
                         let x = (x as i32 + props.x_offset) as f64;
                         let y = (y as i32 + props.y_offset) as f64;
                         particles.push(Particle::new(x, y, props.scale, props.size));
-                        skip = 10;
+                        skip = y as usize % 10 + x as usize % 10;
                     }
                 }
             }
@@ -116,12 +115,13 @@ fn render_loop(context: &web_sys::CanvasRenderingContext2d, particles: &Vec<Part
     }
 
     // Connect particles
-    for particle in particles.iter() {
-        for other_particle in particles.iter() {
+    'top: for (i, particle) in particles.iter().enumerate() {
+        let mut connections = 10;
+        for other_particle in particles.iter().skip(i + 1) {
             let dx = particle.x - other_particle.x;
             let dy = particle.y - other_particle.y;
             let distance = (dx * dx + dy * dy).sqrt();
-            let threshold = particle.scale * 12.;
+            let threshold = particle.scale * 10.;
             if distance < threshold {
                 let opacity = 1. - distance / threshold;
 
@@ -132,6 +132,11 @@ fn render_loop(context: &web_sys::CanvasRenderingContext2d, particles: &Vec<Part
                 context.move_to(particle.x, particle.y);
                 context.line_to(other_particle.x, other_particle.y);
                 context.stroke();
+
+                connections -= 1;
+                if connections == 0 {
+                    continue 'top;
+                }
             }
         }
     }
