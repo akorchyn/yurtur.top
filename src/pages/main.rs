@@ -32,7 +32,7 @@ pub fn Main(cx: Scope) -> Element {
                 max_width: "350px",
                 max_height: "350px",
                 ParticleImage {
-                    scale: 8.,
+                    scale: 12.,
                     size: 2,
                     x_offset: 10,
                     y_offset: 0,
