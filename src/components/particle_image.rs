@@ -3,6 +3,7 @@ use std::{cell::Cell, f64::consts::PI, rc::Rc, time::Duration};
 use dioxus::prelude::*;
 use image::{ImageBuffer, Rgba};
 use wasm_bindgen::{prelude::Closure, JsCast, JsValue};
+use web_sys::TouchList;
 
 #[derive(PartialEq, Props, Clone)]
 pub struct Props {
@@ -29,20 +30,44 @@ pub fn ParticleImage(cx: Scope<Props>) -> Element {
             let _closure = {
                 let canvas = canvas.clone();
                 let mouse = mouse.clone();
-                let closure = Closure::<dyn FnMut(_)>::new(move |event: web_sys::MouseEvent| {
+                let handle_change = move |x, y| {
                     let rect = canvas.get_bounding_client_rect();
                     let scale_x = canvas.width() as f64 / rect.width();
                     let scale_y = canvas.height() as f64 / rect.height();
                     mouse.set(Mouse::new(
-                        (event.client_x() as f64 - rect.left()) * scale_x,
-                        (event.client_y() as f64 - rect.top()) * scale_y,
+                        (x as f64 - rect.left()) * scale_x,
+                        (y as f64 - rect.top()) * scale_y,
                         props.scale,
                     ));
-                });
+                };
+
+                let handle_change_tmp = handle_change.clone();
+                let mouse_closure =
+                    Closure::<dyn FnMut(_)>::new(move |event: web_sys::MouseEvent| {
+                        handle_change_tmp(event.client_x(), event.client_y())
+                    });
+
+                let touch_closure =
+                    Closure::<dyn FnMut(_)>::new(move |event: web_sys::TouchEvent| {
+                        let touch = &event.touches().get(0);
+                        if let Some(touch) = touch {
+                            handle_change(touch.client_x(), touch.client_y())
+                        }
+                    });
                 window
-                    .add_event_listener_with_callback("mousemove", closure.as_ref().unchecked_ref())
+                    .add_event_listener_with_callback(
+                        "mousemove",
+                        mouse_closure.as_ref().unchecked_ref(),
+                    )
                     .unwrap();
-                closure
+
+                window
+                    .add_event_listener_with_callback(
+                        "touchmove",
+                        touch_closure.as_ref().unchecked_ref(),
+                    )
+                    .unwrap();
+                (mouse_closure, touch_closure)
             };
             let mut skip = 0;
             for y in 0..props.image.height() {
