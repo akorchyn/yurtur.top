@@ -8,9 +8,10 @@ pub fn Main(cx: Scope) -> Element {
     let image = image::load_from_memory(image).unwrap();
     let image = image.to_rgba8();
 
-    let rsx = rsx! {
+    let rsx = rsx! { div {
+        class: "bg-secondary text-main w-full p-16",
         div {
-            class: "bg-secondary flex justify-between items-center text-main w-full p-16",
+            class: "flex justify-between items-center",
             div {
                 h1 {
                     class: "font-extrabold text-6xl",
@@ -40,7 +41,34 @@ pub fn Main(cx: Scope) -> Element {
                 }
             }
         }
-    };
+        div {
+            h1 {
+                class: "font-extrabold text-4xl text-center p-8",
+                "Technologies"
+
+            }
+            div {
+                class: "flex justify-evenly items-center h-24",
+
+                img {
+                    class: "h-full w-auto rounded-lg shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30",
+                    src: "./rust.svg",
+                }
+                img {
+                    class: "h-full w-auto rounded-lg shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30",
+                    src: "./cplusplus.svg",
+                }
+                img {
+                    class: "h-full w-auto rounded-lg shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30",
+                    src: "./substrate.svg",
+                }
+                img {
+                    class: "h-full w-auto rounded-lg shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30",
+                    src: "./python.svg",
+                }
+            }
+        }
+    }};
 
     cx.render(rsx)
 }

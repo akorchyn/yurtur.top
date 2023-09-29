@@ -230,17 +230,19 @@ impl Particle {
         let direction_x = force_direction_x * force * self.density;
         let direction_y = force_direction_y * force * self.density;
 
-        if distance < 20. * self.scale {
+        if distance <= 20. * self.scale {
             self.x -= direction_x;
             self.y -= direction_y;
             true
-        } else {
+        } else if distance >= 20.5 * self.scale {
             let dx = self.x - self.base_x;
             let dy = self.y - self.base_y;
             self.x -= dx / 10.;
             self.y -= dy / 10.;
 
             !(dx.abs() < 1. && dy.abs() < 1.)
+        } else {
+            false
         }
     }
 }
