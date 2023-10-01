@@ -1,12 +1,13 @@
 use dioxus::prelude::*;
 
-use crate::components::particle_image::ParticleImage;
+use crate::components::{particle_image::ParticleImage, popover::PopOver};
 
 pub fn Main(cx: Scope) -> Element {
     let image = include_bytes!("../../public/heart.jpg");
 
     let image = image::load_from_memory(image).unwrap();
     let image = image.to_rgba8();
+    const TEXT: &str = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quam nisl, posuere sed quam vitae, tincidunt lobortis quam. Morbi non nunc porta, efficitur turpis lacinia, gravida risus. Fusce dignissim eros id justo elementum, at egestas ipsum posuere. Vivamus suscipit ullamcorper massa. Pellentesque ex nulla, fringilla sed consequat eu, sollicitudin eu nisi. Quisque pulvinar varius risus non pellentesque. Cras eu enim facilisis, maximus arcu quis, gravida lacus. Suspendisse id dui eget erat lobortis rhoncus at tristique turpis. Aliquam finibus commodo vestibulum. Donec maximus laoreet tempor. Phasellus viverra tortor eget euismod gravida. Cras auctor ante sed metus pretium eleifend.";
 
     let rsx = rsx! { div {
         class: "bg-secondary text-main w-full p-16",
@@ -48,23 +49,39 @@ pub fn Main(cx: Scope) -> Element {
 
             }
             div {
-                class: "flex justify-evenly items-center h-24",
+                class: "flex justify-evenly items-center",
 
-                img {
-                    class: "h-full w-auto rounded-lg shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30",
-                    src: "./rust.svg",
+                PopOver {
+                    title: "Rust experience",
+                    text: TEXT,
+                    img {
+                        class: "h-24 w-auto rounded-lg shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30",
+                        src: "./rust.svg",
+                    }
                 }
-                img {
-                    class: "h-full w-auto rounded-lg shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30",
-                    src: "./cplusplus.svg",
+                PopOver {
+                    title: "C++ experience",
+                    text: TEXT,
+                    img {
+                        class: "h-24 w-auto rounded-lg shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30",
+                        src: "./cplusplus.svg",
+                    }
                 }
-                img {
-                    class: "h-full w-auto rounded-lg shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30",
-                    src: "./substrate.svg",
+                PopOver {
+                    title: "Substrate experience",
+                    text: TEXT,
+                    img {
+                        class: "h-24 w-auto rounded-lg shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30",
+                        src: "./substrate.svg",
+                    }
                 }
-                img {
-                    class: "h-full w-auto rounded-lg shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30",
-                    src: "./python.svg",
+                PopOver {
+                    title: "Python experience",
+                    text: TEXT,
+                    img {
+                        class: "h-24 w-auto rounded-lg shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30",
+                        src: "./python.svg",
+                    }
                 }
             }
         }
