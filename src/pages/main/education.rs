@@ -4,20 +4,20 @@ use crate::components::popover::PopOver;
 
 enum Type {
     Education(&'static str, u32, &'static str),
-    Work(&'static str, u32, &'static str ),
+    Work(&'static str, u32, &'static str),
 }
 
 impl Type {
     fn started(&self) -> u32 {
         *match self {
-            Type::Education(_, started,  _) => started,
-            Type::Work(_, started,  _) => started,
+            Type::Education(_, started, _) => started,
+            Type::Work(_, started, _) => started,
         }
     }
 
     fn name(&self) -> &'static str {
         match self {
-            Type::Education(name, _,  _) => name,
+            Type::Education(name, _, _) => name,
             Type::Work(name, _, _) => name,
         }
     }
@@ -28,8 +28,6 @@ impl Type {
             Type::Work(_, _, years) => years,
         }
     }
-
-   
 }
 
 pub fn EducationClientsTimeline(cx: Scope) -> Element {
@@ -52,11 +50,7 @@ pub fn EducationClientsTimeline(cx: Scope) -> Element {
             2021,
             "Jan 2021 - Jul 2022",
         ),
-        Type::Work(
-            "Protocol Engineer at GGx",
-            2022,
-            "Jul 2022 - Present",
-        ),
+        Type::Work("Protocol Engineer at GGx", 2022, "Jul 2022 - Present"),
     ];
 
     education.sort_by(|a, b| a.started().cmp(&b.started()).reverse());
@@ -73,7 +67,7 @@ pub fn EducationClientsTimeline(cx: Scope) -> Element {
 
         rsx! {div {
             class: classes,
-            
+
             PopOver {
                 class: "relative w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-4 rounded border shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30",
                 title: element.name(),
