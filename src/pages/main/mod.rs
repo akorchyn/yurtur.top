@@ -15,27 +15,27 @@ pub fn Main(cx: Scope) -> Element {
     let image = image.to_rgba8();
 
     let rsx = rsx! { div {
-        class: "bg-secondary text-main w-full p-16",
+        class: "bg-secondary text-main w-full p-4 md:p-16",
         div {
             class: "flex justify-between items-center",
             div {
                 h1 {
-                    class: "font-extrabold text-6xl",
+                    class: "font-extrabold text-2xl md:text-6xl",
                     "Artur-Yurii"
                 }
                 h1 {
-                    class: "font-extrabold text-6xl",
+                    class: "font-extrabold text-2xl md:text-6xl",
                     "Korchynskyi"
                 }
                 h2 {
-                    class: "text-5xl",
+                    class: "text-xl md:text-5xl",
                     "Protocol Engineer"
                 }
             }
 
             div {
-                height:"50%",
-                width: "50%",
+                height: "25%",
+                width: "25%",
                 max_width: "350px",
                 max_height: "350px",
                 ParticleImage {

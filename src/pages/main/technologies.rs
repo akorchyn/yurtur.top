@@ -15,26 +15,26 @@ pub fn Technologies(cx: Scope) -> Element {
     let rsx = rsx!(
         div {
             h1 {
-                class: "font-bold text-4xl text-center p-8",
+                class: "font-bold text-xl md:text-4xl text-center p-2 md:p-8",
                 "Technologies"
 
             }
             div {
-                class: "flex justify-evenly items-center",
+                class: "flex justify-evenly md:items-center flex-wrap space-x-4",
                 for (title, src) in TECHNOLOGIES {
                     PopOver {
                         title: title,
                         text: TEXT,
-                        class: "relative w-fit",
+                        class: "relative m-4",
                         div {
                             class: "flex flex-col items-center",
                             img {
-                                class: "h-24 w-auto rounded-lg shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30",
+                                class: "w-16 md:w-32 mb-2 h-auto rounded-lg shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30",
                                 src: src,
                             }
                             p {
-                                class: "mix-blend-multiply  ",
-                                format!("{title} experience")
+                                class: "mix-blend-multiply text-center text-sm md:text-xl",
+                                title
                             }
                         }
                     }

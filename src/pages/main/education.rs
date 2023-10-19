@@ -69,7 +69,7 @@ pub fn EducationClientsTimeline(cx: Scope) -> Element {
             class: classes,
 
             PopOver {
-                class: "relative w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-4 rounded border shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30",
+                class: "relative w-[calc(100%-2rem)] md:w-[calc(50%-2.5rem)] bg-white p-4 rounded border shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30",
                 title: element.name(),
                 text: TEXT,
                 div {
@@ -94,13 +94,13 @@ pub fn EducationClientsTimeline(cx: Scope) -> Element {
     });
 
     let rsx = rsx! { div {
-        class: "m-10 mt-32 mb-32",
+        class: "mb-32 mt-5 m-5 md:m-10 md:mt-32 md:mb-32",
         h1 {
-            class: "text-3xl font-bold text-center text-main",
+            class: "md:text-3xl text-xl font-bold text-center text-main",
             "Education & Work"
         }
         div {
-            class: "mt-10 space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent",
+            class: "mt-5 md:mt-10 space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent",
             elements
         }
     }};
