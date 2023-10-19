@@ -7,61 +7,74 @@ use dioxus_free_icons::{
 
 pub fn Footer(cx: Scope) -> Element {
     let rsx = rsx!(footer {
-        class: "fixed flex space-x-4 bg-main p-4 w-full justify-center items-center bottom-0",
-        a {
-            href: "https://www.t.me/akorchynskyi",
-            target: "_blank",
-            rel: "noopener noreferrer",
-            Icon {
-                icon: FaTelegram,
-                fill: "white",
+        class: "fixed bottom-0 w-full bg-main p-2",
+        div {
+            class: "flex space-x-4 p-2 w-full justify-center items-center",
+            a {
+                href: "https://www.t.me/akorchynskyi",
+                target: "_blank",
+                rel: "noopener noreferrer",
+                Icon {
+                    icon: FaTelegram,
+                    fill: "white",
+                }
+            },
+            a {
+                href: "https://www.github.com/akorchyn",
+                target: "_blank",
+                rel: "noopener noreferrer",
+                Icon {
+                    icon: FaGithub,
+                    fill: "white",
+                }
+            },
+            a {
+                href: "https://www.linkedin.com/in/akorchyn/",
+                target: "_blank",
+                rel: "noopener noreferrer",
+                Icon {
+                    icon: FaLinkedin,
+                    fill: "white",
+                }
+            },
+            a {
+                href: "https://www.instagram.com/lsdgkljahgds/",
+                target: "_blank",
+                rel: "noopener noreferrer",
+                Icon {
+                    icon: FaInstagram,
+                    fill: "white",
+                }
+            },
+            a {
+                href: "https://twitter.com/theYurtur",
+                target: "_blank",
+                rel: "noopener noreferrer",
+                Icon {
+                    icon: FaTwitter,
+                    fill: "white",
+                }
+            },
+            a {
+                href: "https://www.youtube.com/user/Wolf49xxx",
+                target: "_blank",
+                rel: "noopener noreferrer",
+                Icon {
+                    icon: FaYoutube,
+                    fill: "white",
+                }
+            },
+        }
+        div {
+            class: "text-center text-white text-sm",
+
+            a {
+                href: "https://www.github.com/akorchyn/yurtur.top",
+                target: "_blank",
+                rel: "noopener noreferrer",
+                "Source code"
             }
-        },
-        a {
-            href: "https://www.github.com/akorchyn",
-            target: "_blank",
-            rel: "noopener noreferrer",
-            Icon {
-                icon: FaGithub,
-                fill: "white",
-            }
-        },
-        a {
-            href: "https://www.linkedin.com/in/akorchyn/",
-            target: "_blank",
-            rel: "noopener noreferrer",
-            Icon {
-                icon: FaLinkedin,
-                fill: "white",
-            }
-        },
-        a {
-            href: "https://www.instagram.com/lsdgkljahgds/",
-            target: "_blank",
-            rel: "noopener noreferrer",
-            Icon {
-                icon: FaInstagram,
-                fill: "white",
-            }
-        },
-        a {
-            href: "https://twitter.com/theYurtur",
-            target: "_blank",
-            rel: "noopener noreferrer",
-            Icon {
-                icon: FaTwitter,
-                fill: "white",
-            }
-        },
-        a {
-            href: "https://www.youtube.com/user/Wolf49xxx",
-            target: "_blank",
-            rel: "noopener noreferrer",
-            Icon {
-                icon: FaYoutube,
-                fill: "white",
-            }
-        },
+        }
     });
     cx.render(rsx)
 }

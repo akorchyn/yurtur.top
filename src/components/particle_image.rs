@@ -3,7 +3,6 @@ use std::{cell::Cell, f64::consts::PI, rc::Rc, time::Duration};
 use dioxus::prelude::*;
 use image::{ImageBuffer, Rgba};
 use wasm_bindgen::{prelude::Closure, JsCast, JsValue};
-use web_sys::TouchList;
 
 #[derive(PartialEq, Props, Clone)]
 pub struct Props {

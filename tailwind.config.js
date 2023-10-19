@@ -12,6 +12,9 @@ module.exports = {
         'main': '#f08cae',
         'secondary': '#ffe5b4',
         'three': '#ffcba4',
+      },
+      minWidth: {
+        '96': '24rem',
       }
     },
   },

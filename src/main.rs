@@ -10,6 +10,7 @@ fn main() {
 
 fn App(cx: Scope) -> Element {
     let rsx = rsx! {
+
         div {
             components::header::Header {}
             pages::main::Main {}
