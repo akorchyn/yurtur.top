@@ -38,9 +38,9 @@ pub fn ExpandableCard(cx: Scope<ExpandableCardProps>) -> Element {
     };
 
     let class = if *visible.get() {
-        "relative group bg-white p-4 rounded border shadow-none transition-all duration-500 transform cursor-pointer scale-110"
+        "relative w-[calc(100%-2rem)] max-w-xl group bg-white p-4 rounded border shadow-none transition-all duration-500 transform cursor-pointer scale-110"
     } else {
-        "relative group bg-white p-4 rounded border shadow-none transition-all duration-500 transform cursor-pointer scale-100"
+        "relative w-[calc(100%-2rem)] max-w-xl group bg-white p-4 rounded border shadow-none transition-all duration-500 transform cursor-pointer scale-100"
     };
 
     let card = rsx!(div {
@@ -57,7 +57,7 @@ pub fn ExpandableCard(cx: Scope<ExpandableCardProps>) -> Element {
                 }
             }
             div {
-                class: "text-slate-500 font-bold",
+                class: "text-slate-500 font-bold ",
                 element.header.as_str()
             },
 

@@ -21,9 +21,9 @@ pub fn EducationClientsTimeline(cx: Scope) -> Element {
     education.sort_by(|a, b| a.started_year.cmp(&b.started_year).reverse());
     let elements = education.into_iter().map(|element| {
         let classes = if element.is_education {
-            "relative flex items-center justify-between md:justify-normal md:flex-row-reverse"
+            "relative flex items-stretch items-center justify-between md:justify-normal md:flex-row-reverse"
         } else {
-            "relative flex items-center justify-between md:justify-normal"
+            "relative flex items-stretch items-center justify-between md:justify-normal"
         };
         rsx! {div {
             class: classes,
