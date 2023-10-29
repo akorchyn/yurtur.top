@@ -1597,6 +1597,8 @@ dependencies = [
  "dioxus-web",
  "image",
  "js-sys",
+ "serde",
+ "serde_json",
  "wasm-bindgen",
  "web-sys",
 ]

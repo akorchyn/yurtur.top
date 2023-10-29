@@ -1,15 +1,10 @@
 use dioxus::prelude::*;
 
-use crate::components::popover::PopOver;
-
 pub fn Technologies(cx: Scope) -> Element {
-    const TEXT: &str = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quam nisl, posuere sed quam vitae, tincidunt lobortis quam. Morbi non nunc porta, efficitur turpis lacinia, gravida risus. Fusce dignissim eros id justo elementum, at egestas ipsum posuere. Vivamus suscipit ullamcorper massa. Pellentesque ex nulla, fringilla sed consequat eu, sollicitudin eu nisi. Quisque pulvinar varius risus non pellentesque. Cras eu enim facilisis, maximus arcu quis, gravida lacus. Suspendisse id dui eget erat lobortis rhoncus at tristique turpis. Aliquam finibus commodo vestibulum. Donec maximus laoreet tempor. Phasellus viverra tortor eget euismod gravida. Cras auctor ante sed metus pretium eleifend.";
-
-    const TECHNOLOGIES: [(&str, &str); 4] = [
+    const TECHNOLOGIES: [(&str, &str); 3] = [
         ("Rust", "icons/rust.svg"),
         ("C++", "icons/cplusplus.svg"),
-        ("Substrate", "icons/substrate.svg"),
-        ("Python", "icons/python.svg"),
+        ("Blockchain", "icons/blockchain.svg"),
     ];
 
     let rsx = rsx!(
@@ -22,14 +17,10 @@ pub fn Technologies(cx: Scope) -> Element {
             div {
                 class: "flex justify-evenly md:items-center flex-wrap space-x-4",
                 for (title, src) in TECHNOLOGIES {
-                    PopOver {
-                        title: title,
-                        text: TEXT,
-                        class: "relative m-4",
                         div {
-                            class: "flex flex-col items-center",
+                            class: "p-2 flex flex-col items-center rounded-lg shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30",
                             img {
-                                class: "w-16 md:w-32 mb-2 h-auto rounded-lg shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30",
+                                class: "w-16 md:w-32 mb-2 h-auto",
                                 src: src,
                             }
                             p {
@@ -37,7 +28,6 @@ pub fn Technologies(cx: Scope) -> Element {
                                 title
                             }
                         }
-                    }
                 }
             }
         }

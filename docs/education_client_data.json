@@ -1,0 +1,52 @@
+[
+    {
+        "id": "kpi",
+        "name": "National Technical University of Ukraine “Igor Sikorsky Kyiv Polytechnic Institute”",
+        "started_year": 2019,
+        "timeline": "2019 - 2023",
+        "is_education": true,
+        "type": "Bachelor's degree",
+        "description": "Pretium lectus quam id leo. Urna et pharetra aliquam vestibulum morbi blandit cursus risus",
+        "details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dignissim laoreet sodales. Etiam non odio vestibulum, pulvinar odio at, pellentesque quam. Aenean eget congue neque. Quisque id nisl et enim semper ullamcorper. Aenean et tortor eu erat scelerisque mattis. Nulla consequat id libero a efficitur. Morbi eget sem massa. Cras pharetra felis id sem aliquam cursus. Phasellus massa nisl, commodo lacinia laoreet in, sodales sed tellus. Sed suscipit diam sed sapien tempor, ut placerat augue suscipit. Praesent tristique ornare sapien, vitae fringilla eros blandit vitae. Proin in tempor massa, at accumsan neque. Duis vitae placerat odio"
+    },
+    {
+        "id": "ecole42",
+        "name": "École 42",
+        "started_year": 2018,
+        "timeline": "2018-2020",
+        "is_education": true,
+        "type": "Programming school",
+        "description": "Pretium lectus quam id leo. Urna et pharetra aliquam vestibulum morbi blandit cursus risus",
+        "details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dignissim laoreet sodales. Etiam non odio vestibulum, pulvinar odio at, pellentesque quam. Aenean eget congue neque. Quisque id nisl et enim semper ullamcorper. Aenean et tortor eu erat scelerisque mattis. Nulla consequat id libero a efficitur. Morbi eget sem massa. Cras pharetra felis id sem aliquam cursus. Phasellus massa nisl, commodo lacinia laoreet in, sodales sed tellus. Sed suscipit diam sed sapien tempor, ut placerat augue suscipit. Praesent tristique ornare sapien, vitae fringilla eros blandit vitae. Proin in tempor massa, at accumsan neque. Duis vitae placerat odio"
+    },
+    {
+        "id": "intellias",
+        "name": "Junior/Middle Engineer at Here Technologies via Intellias",
+        "started_year": 2019,
+        "timeline": "Sep 2019 - Jan 2021",
+        "is_education": false,
+        "type": "Outsource company",
+        "description": "Pretium lectus quam id leo. Urna et pharetra aliquam vestibulum morbi blandit cursus risus",
+        "details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dignissim laoreet sodales. Etiam non odio vestibulum, pulvinar odio at, pellentesque quam. Aenean eget congue neque. Quisque id nisl et enim semper ullamcorper. Aenean et tortor eu erat scelerisque mattis. Nulla consequat id libero a efficitur. Morbi eget sem massa. Cras pharetra felis id sem aliquam cursus. Phasellus massa nisl, commodo lacinia laoreet in, sodales sed tellus. Sed suscipit diam sed sapien tempor, ut placerat augue suscipit. Praesent tristique ornare sapien, vitae fringilla eros blandit vitae. Proin in tempor massa, at accumsan neque. Duis vitae placerat odio"
+    },
+    {
+        "id": "epam",
+        "name": "Senior Engineer at Refinitiv via EPAM Systems",
+        "started_year": 2021,
+        "timeline": "Jan 2021 - Jul 2022",
+        "is_education": false,
+        "type": "Outsource company",
+        "description": "Pretium lectus quam id leo. Urna et pharetra aliquam vestibulum morbi blandit cursus risus",
+        "details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dignissim laoreet sodales. Etiam non odio vestibulum, pulvinar odio at, pellentesque quam. Aenean eget congue neque. Quisque id nisl et enim semper ullamcorper. Aenean et tortor eu erat scelerisque mattis. Nulla consequat id libero a efficitur. Morbi eget sem massa. Cras pharetra felis id sem aliquam cursus. Phasellus massa nisl, commodo lacinia laoreet in, sodales sed tellus. Sed suscipit diam sed sapien tempor, ut placerat augue suscipit. Praesent tristique ornare sapien, vitae fringilla eros blandit vitae. Proin in tempor massa, at accumsan neque. Duis vitae placerat odio"
+    },
+    {
+        "id": "ggx",
+        "name": "Protocol Engineer at GGx",
+        "started_year": 2022,
+        "timeline": "Jul 2022 - Present",
+        "is_education": false,
+        "type": "Product company",
+        "description": "Pretium lectus quam id leo. Urna et pharetra aliquam vestibulum morbi blandit cursus risus",
+        "details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dignissim laoreet sodales. Etiam non odio vestibulum, pulvinar odio at, pellentesque quam. Aenean eget congue neque. Quisque id nisl et enim semper ullamcorper. Aenean et tortor eu erat scelerisque mattis. Nulla consequat id libero a efficitur. Morbi eget sem massa. Cras pharetra felis id sem aliquam cursus. Phasellus massa nisl, commodo lacinia laoreet in, sodales sed tellus. Sed suscipit diam sed sapien tempor, ut placerat augue suscipit. Praesent tristique ornare sapien, vitae fringilla eros blandit vitae. Proin in tempor massa, at accumsan neque. Duis vitae placerat odio"
+    }
+]

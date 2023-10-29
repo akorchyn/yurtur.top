@@ -1,9 +1,9 @@
 use dioxus::prelude::*;
 
-pub mod education;
+pub mod education_clients;
 pub mod technologies;
 
-use education::EducationClientsTimeline;
+use education_clients::EducationClientsTimeline;
 use technologies::Technologies;
 
 use crate::components::particle_image::ParticleImage;
