@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Rust exp",
+        "src": "/icons/rust.svg",
+        "description": "GGx, Tricorn, Ultimate Division"
+    },
+    {
+        "title": "C++ Exp",
+        "src": "/icons/cplusplus.svg",
+        "description": "Here & Refinitiv contractor"
+    },
+    {
+        "title": "Blockchain exp",
+        "src": "/icons/blockchain.svg",
+        "description": "GGx, Substrate, Casper"
+    }
+]

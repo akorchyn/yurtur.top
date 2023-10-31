@@ -21,9 +21,9 @@ pub fn EducationClientsTimeline(cx: Scope) -> Element {
     education.sort_by(|a, b| a.started_year.cmp(&b.started_year).reverse());
     let elements = education.into_iter().map(|element| {
         let classes = if element.is_education {
-            "relative flex items-stretch items-center justify-between md:justify-normal md:flex-row-reverse"
+            "relative flex items-stretch items-center justify-between lg:justify-normal lg:flex-row-reverse"
         } else {
-            "relative flex items-stretch items-center justify-between md:justify-normal"
+            "relative flex items-stretch items-center justify-between lg:justify-normal"
         };
         rsx! {div {
             class: classes,
@@ -45,9 +45,9 @@ pub fn EducationClientsTimeline(cx: Scope) -> Element {
             class: "md:text-3xl text-xl font-bold text-center text-main",
             "Experience timeline"
         }
-        // Only show this on medium and large screens
+        // Only show this on large screens
         div {
-            class: "text-2xl font-semibold text-main justify-around hidden md:flex",
+            class: "text-2xl font-semibold text-main justify-around hidden lg:flex",
             div {
                 "Work Experience"
             }
@@ -56,7 +56,7 @@ pub fn EducationClientsTimeline(cx: Scope) -> Element {
             }
         }
         div {
-            class: "mt-5 md:mt-10 space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-main before:to-transparent",
+            class: "mt-5 md:mt-10 space-y-14 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px lg:before:mx-auto lg:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-main before:to-transparent",
             elements
         }
     }};
