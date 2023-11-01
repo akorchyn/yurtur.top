@@ -15,7 +15,7 @@ pub fn Main(cx: Scope) -> Element {
     let image = image.to_rgba8();
 
     let rsx = rsx! { div {
-        class: "bg-secondary text-main w-full p-4 md:p-16",
+        class: "bg-secondary text-main w-full p-safe-or-4 md:p-safe-or-16",
         div {
             class: "flex justify-between items-center",
             div {

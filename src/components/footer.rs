@@ -7,7 +7,7 @@ use dioxus_free_icons::{
 
 pub fn Footer(cx: Scope) -> Element {
     let rsx = rsx!(footer {
-        class: "fixed bottom-0 w-full bg-main p-2 z-50",
+        class: "fixed bottom-0 w-full bg-main p-safe-or-2 z-50 ",
         div {
             class: "flex space-x-4 p-2 w-full justify-center items-center",
             a {

@@ -83,7 +83,7 @@ pub fn EducationClientsTimeline(cx: Scope) -> Element {
             }
         }
         div {
-            class: "mt-5 md:mt-10 space-y-14 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px lg:before:mx-auto lg:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-main before:to-transparent",
+            class: "mt-5 md:mt-10 space-y-4 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px lg:before:mx-auto lg:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-main before:to-transparent",
             elements
         }
     }};
