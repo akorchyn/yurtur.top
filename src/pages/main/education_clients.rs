@@ -60,7 +60,7 @@ pub fn EducationClientsTimeline(cx: Scope) -> Element {
                 right_top: element.timeline,
                 header: name,
                 description: element.description,
-                markdown_details: state.read().get(&element.name).unwrap_or(&None).clone().unwrap_or_else(|| "Failure".to_string()),
+                markdown_details: state.read().get(&element.name).unwrap_or(&None).clone().unwrap_or_else(|| "Loading".to_string()),
 
             }
         }}
