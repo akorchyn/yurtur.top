@@ -11,7 +11,11 @@ dioxus-web = "0.4"
 dioxus-free-icons = { version = "0.7", default-features = false, features = [
     "font-awesome-brands",
 ] }
+dioxus_markdown = { git = "https://github.com/DioxusLabs/markdown.git", branch = "master", version = "0.2.0" }
 chrono = "0.4"
+reqwest = "0.11"
+log = "0.4"
+wasm-logger = "0.2.0"
 
 # for canvas
 web-sys = { version = "0.3", features = [

@@ -1,4 +1,5 @@
 use dioxus::prelude::*;
+use dioxus_markdown::Markdown;
 
 #[derive(Props, PartialEq)]
 pub struct ExpandableCardProps {
@@ -6,7 +7,7 @@ pub struct ExpandableCardProps {
     right_top: String,
     header: String,
     description: String,
-    details: String,
+    markdown_details: String,
 }
 
 pub fn ExpandableCard(cx: Scope<ExpandableCardProps>) -> Element {
@@ -15,9 +16,9 @@ pub fn ExpandableCard(cx: Scope<ExpandableCardProps>) -> Element {
 
     let render_part = if *visible.get() {
         rsx!(div {
-            div {
-                class: "text-slate-500 text-sm",
-                element.details.as_str()
+            Markdown {
+                class: "prose prose-sm prose-slate prose-headings:text-sm prose-headings:font-bold prose-headings:text-slate-500 py-2",
+                content: element.markdown_details.as_str()
             }
             div {
                 class: "flex justify-end text-sm text-main group-hover:underline",
@@ -26,6 +27,10 @@ pub fn ExpandableCard(cx: Scope<ExpandableCardProps>) -> Element {
         })
     } else {
         rsx!(div {
+            div {
+                class: "text-slate-500 font-bold py-2",
+                element.header.as_str()
+            },
             div {
                 class: "text-slate-500 text-sm",
                 element.description.as_str()
@@ -56,10 +61,6 @@ pub fn ExpandableCard(cx: Scope<ExpandableCardProps>) -> Element {
                     element.right_top.as_str()
                 }
             }
-            div {
-                class: "text-slate-500 font-bold ",
-                element.header.as_str()
-            },
 
             render_part,
         }

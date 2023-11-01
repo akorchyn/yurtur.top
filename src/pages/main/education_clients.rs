@@ -1,39 +1,70 @@
+use std::collections::HashMap;
+
 use dioxus::prelude::*;
 
-use crate::components::expandable_card::ExpandableCard;
+use crate::{base_url, components::expandable_card::ExpandableCard};
 
-#[derive(serde::Deserialize)]
+#[derive(serde::Deserialize, Debug)]
 struct Type {
     name: String,
-    started_year: u16,
     timeline: String,
     description: String,
-    details: String,
+    url: String,
     #[serde(rename = "type")]
     type_: String,
     is_education: bool,
 }
 
-pub fn EducationClientsTimeline(cx: Scope) -> Element {
-    let mut education: Vec<Type> =
-        serde_json::from_str(include_str!("../../../public/education_client_data.json")).ok()?;
+async fn load_content(
+    key: String,
+    url: String,
+    mut state: UseRef<HashMap<String, Option<String>>>,
+) {
+    if state.read().get(&key).is_some() {
+        return;
+    }
+    state.write().insert(key.clone(), None);
+    match reqwest::get(base_url() + &url).await {
+        Ok(data) => {
+            let content = data.text().await.unwrap_or_else(|_| "Error".to_string());
+            state.write().insert(key.clone(), Some(content));
+        }
+        Err(err) => {
+            state
+                .write()
+                .insert(key.clone(), Some(format!("Error: {}", err)));
+        }
+    }
+}
 
-    education.sort_by(|a, b| a.started_year.cmp(&b.started_year).reverse());
-    let elements = education.into_iter().map(|element| {
+pub fn EducationClientsTimeline(cx: Scope) -> Element {
+    log::info!("EducationClientsTimeline");
+    let data: Vec<Type> =
+        serde_json::from_str(include_str!("../../../public/education_client_data.json")).ok()?;
+    log::info!("Data: {:?}", data);
+    let state = use_ref(cx, || HashMap::<String, Option<String>>::new());
+    log::info!("State: {:?}", state.read());
+
+    let elements = data.into_iter().map(|element| {
         let classes = if element.is_education {
             "relative flex items-stretch items-center justify-between lg:justify-normal lg:flex-row-reverse"
         } else {
             "relative flex items-stretch items-center justify-between lg:justify-normal"
         };
+        let name = element.name.clone();
         rsx! {div {
             class: classes,
+            onmouseenter: move |_| {
+                log::info!("Clicked on {}", element.name);
+                load_content(element.name.clone(), element.url.clone(), state.clone())
+            },
 
             ExpandableCard {
                 type_: element.type_,
                 right_top: element.timeline,
-                header:     element.name,
+                header: name,
                 description: element.description,
-                details: element.details,
+                markdown_details: state.read().get(&element.name).unwrap_or(&None).clone().unwrap_or_else(|| "Failure".to_string()),
 
             }
         }}
