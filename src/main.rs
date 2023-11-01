@@ -9,7 +9,7 @@ pub fn base_url() -> String {
 }
 
 fn main() {
-    let log_config = wasm_logger::Config::new(log::Level::Info);
+    let log_config = wasm_logger::Config::new(log::Level::Warn);
     wasm_logger::init(log_config);
     dioxus_web::launch(App);
 }

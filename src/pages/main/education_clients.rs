@@ -38,12 +38,9 @@ async fn load_content(
 }
 
 pub fn EducationClientsTimeline(cx: Scope) -> Element {
-    log::info!("EducationClientsTimeline");
     let data: Vec<Type> =
         serde_json::from_str(include_str!("../../../public/education_client_data.json")).ok()?;
-    log::info!("Data: {:?}", data);
     let state = use_ref(cx, || HashMap::<String, Option<String>>::new());
-    log::info!("State: {:?}", state.read());
 
     let elements = data.into_iter().map(|element| {
         let classes = if element.is_education {
@@ -55,7 +52,6 @@ pub fn EducationClientsTimeline(cx: Scope) -> Element {
         rsx! {div {
             class: classes,
             onmouseenter: move |_| {
-                log::info!("Clicked on {}", element.name);
                 load_content(element.name.clone(), element.url.clone(), state.clone())
             },
 
