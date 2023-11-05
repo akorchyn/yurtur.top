@@ -22,12 +22,17 @@ fn is_card_visible(element: &DomRect, inner_height: f64) -> bool {
 
 pub fn ExpandableCard(cx: Scope<ExpandableCardProps>) -> Element {
     let visible = use_state(cx, || false);
+    let is_inited = use_state(cx, || false);
     let element = cx.props;
 
     // Use an effect to reset the scroll when the card is closed
     use_effect(cx, (visible, &element.id), |(visible, id)| {
-        to_owned![visible, id];
+        to_owned![visible, id, is_inited];
         async move {
+            if !*is_inited.get() {
+                is_inited.set(true);
+                return;
+            }
             if !*visible {
                 // Use web_sys to get the document and reset the scroll position
                 if let Some(window) = web_sys::window() {
