@@ -62,7 +62,7 @@ pub fn ExpandableCard(cx: Scope<ExpandableCardProps>) -> Element {
             }
             render_part
             div {
-                class: "flex flex-wrap justify-start text-xs py-2 text-main",
+                class: "flex flex-wrap justify-start text-xs py-2 text-third",
                 element.tags.as_str()
             }
             div {

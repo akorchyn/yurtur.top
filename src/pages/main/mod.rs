@@ -23,7 +23,7 @@ pub fn Main(cx: Scope) -> Element {
                     class: "font-extrabold text-2xl md:text-6xl",
                     "Ar"
                     span {
-                        class: "text-indigo-300",
+                        class: "text-third",
                         "tur-Yur"
                     }
                     "ii"

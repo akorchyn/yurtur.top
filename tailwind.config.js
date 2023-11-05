@@ -11,7 +11,7 @@ module.exports = {
       colors: {
         'main': '#f08cae',
         'secondary': '#ffe5b4',
-        'three': '#f87171',
+        'third': '#a5b4fc',
       },
       minWidth: {
         '96': '24rem',
