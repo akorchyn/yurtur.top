@@ -21,7 +21,12 @@ pub fn Main(cx: Scope) -> Element {
             div {
                 h1 {
                     class: "font-extrabold text-2xl md:text-6xl",
-                    "Artur-Yurii"
+                    "Ar"
+                    span {
+                        class: "text-indigo-300",
+                        "tur-Yur"
+                    }
+                    "ii"
                 }
                 h1 {
                     class: "font-extrabold text-2xl md:text-6xl",
