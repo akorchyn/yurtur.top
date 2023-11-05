@@ -13,7 +13,3 @@ Contributed to a pivotal project focused on establishing a safe and secure cross
 #### Security Assurance
 
 * The project's smart contracts and operational integrity were audited by Hallborn, affirming the high-security standards upheld throughout the development lifecycle.
-
-### Technical Environment
-
-Cross-Chain Interoperability, Rust, Smart Contracts, Casper Network, Ethereum, Avalanche

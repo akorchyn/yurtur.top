@@ -1,3 +1,31 @@
-# Junior/Middle C++ Engineer at Here (contractor via Intellias)
+# Junior & Middle C++ Engineer at Here Technologies
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dignissim laoreet sodales. Etiam non odio vestibulum, pulvinar odio at, pellentesque quam. Aenean eget congue neque. Quisque id nisl et enim semper ullamcorper. Aenean et tortor eu erat scelerisque mattis. Nulla consequat id libero a efficitur. Morbi eget sem massa. Cras pharetra felis id sem aliquam cursus. Phasellus massa nisl, commodo lacinia laoreet in, sodales sed tellus. Sed suscipit diam sed sapien tempor, ut placerat augue suscipit. Praesent tristique ornare sapien, vitae fringilla eros blandit vitae. Proin in tempor massa, at accumsan neque. Duis vitae placerat odio
+## Project 1: Here WeGo Mobile Application SDK
+
+### Overview
+
+As a Junior C++ Engineer, I was tasked with maintaining and updating the SDK for the legacy mobile SDK for 'Here WeGo' meantime new SDK was in development. My role involved ensuring the application's performance and functionality kept pace with modern standards and user expectations.
+
+### Key Contributions
+
+- SDK Maintenance
+  - Diligently updated and maintained the SDK, guaranteeing compatibility with the latest mobile operating systems and hardware.
+- Bug Resolution
+  - Investigated and resolved issues reported by clients, enhancing application stability and user satisfaction. Improved routing algorithms adjusting heuristics.
+- Continuous Improvement:
+  - Collaborated with the development team to refine the application's features and performance through iterative updates.
+
+## Project 2: Map Routing & Data Format Optimization
+
+### Overview
+
+Transitioning to a Middle C++ Engineer role, I contributed to the development of a new map format designed to optimize routing speed. This initiative involved building various components from the scratch and refining routing algorithms to leverage the new data format.
+
+## Key Contributions
+
+- Map Format Development
+  - I participated in designing and implementing new data format as part of routing team.
+- Performance Profiling
+  - Conducted thorough profiling of the new system to identify and resolve performance bottlenecks.
+- Test Coverage
+  - Ensured reliability and stability by implementing comprehensive test suites for new components.

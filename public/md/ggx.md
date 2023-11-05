@@ -18,7 +18,3 @@ At GGx, I hold a key position as a Core Protocol Developer, playing a vital role
 * Aided in the integration of the Inter-Blockchain Communication (IBC) protocol, expanding our chain's capability to connect and transfer information with Cosmos
 * Helped with the integration of Multi-Party Computation (MPC), significantly increasing the protocol's privacy-preserving and security capabilities. Unfortunately it was postponed after security issues were identified.
 * Conducted thorough reviews of the development of zk-SNARK Groth16 precompile, ensuring the privacy and scalability features met the highest standards.
-
-## Technical Environment
-
-Substrate Framework, Interchain Communication, Ethereum, Multi-Party Computation, Zero-Knowledge Proofs, Blockchain Development, Security and Protocol Design

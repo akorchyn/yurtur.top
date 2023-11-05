@@ -1,47 +1,58 @@
 [
     {
         "id": "ggx",
-        "name": "Protocol Engineer at GGx",
+        "position": "Protocol Engineer",
+        "company": "GGx",
         "started_year": 2022,
         "timeline": "Nov 2022 - Present",
         "is_education": false,
         "type": "Product company",
         "description": "Interchain Infrastructure Protocol. IBC, MPC, Scnorr signatures, ZK Rollups, Advanced Liquidity Routing",
-        "url": "/md/ggx.md"
+        "url": "/md/ggx.md",
+        "tags": "#Rust #Js #Nix #Substrate #IBC #Ethereum #MPC #ZKProofs #Blockchain #ProtocolDesign #Solidity"
     },
     {
         "id": "tricorn",
-        "name": "Senior Rust Developer at Tricorn",
+        "position": "Senior Rust Developer",
+        "company": "Tricorn",
+        "via": "BoostyLabs",
         "started_year": 2022,
         "timeline": "Jul 2022 - Nov 2022",
         "is_education": false,
         "type": "Contract",
         "description": "Safe and secure centralized cross-chain bridge for EVM and non-EVM blockchains. Supporting Ethereum, Casper Network, Avalanch and many more",
-        "url": "/md/tricorn.md"
+        "url": "/md/tricorn.md",
+        "tags": "#Rust #BlockchainInteroperability #Solidity #CasperNetwork #Ethereum #Avalanche #SmartContracts #GoLang"
     },
     {
         "id": "ultimate division",
-        "name": "Senior Rust Developer at Ultimate Division",
+        "position": "Senior Rust Developer",
+        "company": "Ultimate Division",
+        "via": "BoostyLabs",
         "started_year": 2022,
         "timeline": "Sep 2022 - Oct 2022",
         "is_education": false,
         "type": "Contract",
         "description": "The Blockchain's first football metaverse game - hold NFT player cards, manage, and play to earn.",
-        "url": "/md/ud.md"
+        "url": "/md/ud.md",
+        "tags": "#Rust #Blockchain #NFT #ERC20 #SmartContracts #Casper"
     },
     {
         "id": "epam",
-        "name": "Senior Engineer at Refinitiv via EPAM Systems",
+        "position": "Senior C++ Engineer",
+        "company": "Refinitiv",
+        "via": "EPAM Systems",
         "started_year": 2021,
         "timeline": "Jan 2021 - Jul 2022",
         "is_education": false,
-        "type": "Outsource company",
-        "description": "Pretium lectus quam id leo. Urna et pharetra aliquam vestibulum morbi blandit cursus risus",
-        "url": "/md/epam.md"
+        "type": "Outsource company EPAM",
+        "description": "Real-time data distribution system for financial markets.",
+        "url": "/md/epam.md",
+        "tags": "#CPP #RealTimeData #Jenkins #CI/CD #Support #Automation #SunOS #PerformanceOptimization"
     },
     {
         "id": "kpi",
-        "name": "National Technical University of Ukraine “Igor Sikorsky Kyiv Polytechnic Institute”",
+        "position": "National Technical University of Ukraine “Igor Sikorsky Kyiv Polytechnic Institute”",
         "started_year": 2019,
         "timeline": "2019 - 2023",
         "is_education": true,
@@ -51,17 +62,20 @@
     },
     {
         "id": "intellias",
-        "name": "Junior/Middle Engineer at Here Technologies via Intellias",
+        "position": "Junior/Middle Engineer",
+        "company": "Here Technologies",
+        "via": "Intellias",
         "started_year": 2019,
         "timeline": "Sep 2019 - Jan 2021",
         "is_education": false,
-        "type": "Outsource company",
-        "description": "Pretium lectus quam id leo. Urna et pharetra aliquam vestibulum morbi blandit cursus risus",
-        "url": "/md/intellias.md"
+        "type": "Outsource company Intellias",
+        "description": "Leader of the map-making industry. Here Technologies is a company that provides mapping and location data and related services to individuals and companies.",
+        "url": "/md/intellias.md",
+        "tags": "#C++ #Mobile #Android #SDK #ClientSupport #Routing #PerformanceOptimization"
     },
     {
         "id": "ecole42",
-        "name": "École 42",
+        "position": "École 42",
         "started_year": 2018,
         "timeline": "2018-2020",
         "is_education": true,

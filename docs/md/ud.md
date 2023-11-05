@@ -11,8 +11,4 @@ Engaged in an innovative contract role with Ultimate Division. The Blockchain's 
 * Assisted designing NFT marketplace contract.
 * The tokens and NFTs are minted using a backend-generated signature, enhancing security and trust in the digital assets.
 * Passed the audit from the Casper Network.
-* Integrated and tested the functionality alongside to the core team.
-
-## Technical Environment
-
-Casper Network, Smart Contracts, NFTs, Blockchain Integration, Backend Development, Security Testing
+* Integrated and tested the functionality alongside to the core team

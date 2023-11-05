@@ -8,6 +8,7 @@ pub struct ExpandableCardProps {
     header: String,
     description: String,
     markdown_details: String,
+    tags: String,
 }
 
 pub fn ExpandableCard(cx: Scope<ExpandableCardProps>) -> Element {
@@ -20,10 +21,6 @@ pub fn ExpandableCard(cx: Scope<ExpandableCardProps>) -> Element {
                 class: "prose prose-sm prose-slate prose-headings:text-sm prose-headings:font-bold prose-headings:text-slate-500 py-2",
                 content: element.markdown_details.as_str()
             }
-            div {
-                class: "flex justify-end text-sm text-main group-hover:underline",
-                "Read less"
-            }
         })
     } else {
         rsx!(div {
@@ -35,11 +32,13 @@ pub fn ExpandableCard(cx: Scope<ExpandableCardProps>) -> Element {
                 class: "text-slate-500 text-sm",
                 element.description.as_str()
             }
-            div {
-                class: "flex justify-end text-sm text-main group-hover:underline",
-                "Read more"
-            }
         })
+    };
+
+    let read_less_or_more = if *visible.get() {
+        "Read less"
+    } else {
+        "Read more"
     };
 
     let class = if *visible.get() {
@@ -61,8 +60,15 @@ pub fn ExpandableCard(cx: Scope<ExpandableCardProps>) -> Element {
                     element.right_top.as_str()
                 }
             }
-
-            render_part,
+            render_part
+            div {
+                class: "flex flex-wrap justify-start text-xs py-2 text-main",
+                element.tags.as_str()
+            }
+            div {
+                class: "flex justify-end text-sm text-main group-hover:underline",
+                read_less_or_more
+            }
         }
     });
 

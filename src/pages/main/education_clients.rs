@@ -6,13 +6,17 @@ use crate::{base_url, components::expandable_card::ExpandableCard};
 
 #[derive(serde::Deserialize, Debug)]
 struct Type {
-    name: String,
+    id: String,
+    position: String,
     timeline: String,
     description: String,
     url: String,
     #[serde(rename = "type")]
     type_: String,
     is_education: bool,
+    company: Option<String>,
+    via: Option<String>,
+    tags: Option<String>,
 }
 
 async fn load_content(
@@ -48,11 +52,18 @@ pub fn EducationClientsTimeline(cx: Scope) -> Element {
         } else {
             "relative flex items-stretch items-center justify-between lg:justify-normal"
         };
-        let name = element.name.clone();
+        let suffix = match (element.company, element.via) {
+            (Some(company), Some(via)) => format!("at {} via {}", company, via),
+            (Some(company), None) => format!("at {}", company),
+            (None, Some(via)) => format!("via {}", via),
+            _ => "".to_string(),
+        };
+        let name = element.position + " " + &suffix;
+
         rsx! {div {
             class: classes,
             onmouseenter: move |_| {
-                load_content(element.name.clone(), element.url.clone(), state.clone())
+                load_content(element.id.clone(), element.url.clone(), state.clone())
             },
 
             ExpandableCard {
@@ -60,8 +71,8 @@ pub fn EducationClientsTimeline(cx: Scope) -> Element {
                 right_top: element.timeline,
                 header: name,
                 description: element.description,
-                markdown_details: state.read().get(&element.name).unwrap_or(&None).clone().unwrap_or_else(|| "Loading".to_string()),
-
+                markdown_details: state.read().get(&element.id).unwrap_or(&None).clone().unwrap_or_else(|| "Loading".to_string()),
+                tags: element.tags.unwrap_or_else(|| "".to_string()),
             }
         }}
     });
