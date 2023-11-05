@@ -19,11 +19,7 @@ struct Type {
     tags: Option<String>,
 }
 
-async fn load_content(
-    key: String,
-    url: String,
-    mut state: UseRef<HashMap<String, Option<String>>>,
-) {
+async fn load_content(key: String, url: String, state: UseRef<HashMap<String, Option<String>>>) {
     if state.read().get(&key).is_some() {
         return;
     }
@@ -44,7 +40,7 @@ async fn load_content(
 pub fn EducationClientsTimeline(cx: Scope) -> Element {
     let data: Vec<Type> =
         serde_json::from_str(include_str!("../../../public/education_client_data.json")).ok()?;
-    let state = use_ref(cx, || HashMap::<String, Option<String>>::new());
+    let state = use_ref(cx, HashMap::<String, Option<String>>::new);
 
     let elements = data.into_iter().map(|element| {
         let classes = if element.is_education {
@@ -67,12 +63,13 @@ pub fn EducationClientsTimeline(cx: Scope) -> Element {
             },
 
             ExpandableCard {
+                id: element.id.clone(),
                 type_: element.type_,
                 right_top: element.timeline,
                 header: name,
                 description: element.description,
                 markdown_details: state.read().get(&element.id).unwrap_or(&None).clone().unwrap_or_else(|| "Loading".to_string()),
-                tags: element.tags.unwrap_or_else(|| "".to_string()),
+                tags: element.tags.unwrap_or_default(),
             }
         }}
     });

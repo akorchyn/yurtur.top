@@ -1,8 +1,10 @@
 use dioxus::prelude::*;
 use dioxus_markdown::Markdown;
+use web_sys::DomRect;
 
 #[derive(Props, PartialEq)]
 pub struct ExpandableCardProps {
+    id: String,
     type_: String,
     right_top: String,
     header: String,
@@ -11,9 +13,48 @@ pub struct ExpandableCardProps {
     tags: String,
 }
 
+fn is_card_visible(element: &DomRect, inner_height: f64) -> bool {
+    let top = element.top();
+    let bottom = element.bottom();
+
+    top > 0.0 && bottom < inner_height
+}
+
 pub fn ExpandableCard(cx: Scope<ExpandableCardProps>) -> Element {
     let visible = use_state(cx, || false);
     let element = cx.props;
+
+    // Use an effect to reset the scroll when the card is closed
+    use_effect(cx, (visible, &element.id), |(visible, id)| {
+        to_owned![visible, id];
+        async move {
+            if !*visible {
+                // Use web_sys to get the document and reset the scroll position
+                if let Some(window) = web_sys::window() {
+                    if let (Some(document), Some(scroll_y), Some(inner_height)) = (
+                        window.document(),
+                        window.scroll_y().ok(),
+                        window.inner_height().ok(),
+                    ) {
+                        if let (Some(element), Some(inner_height)) =
+                            (document.get_element_by_id(&id), inner_height.as_f64())
+                        {
+                            let rect: web_sys::DomRect = element.get_bounding_client_rect();
+
+                            if !is_card_visible(&rect, inner_height) {
+                                let y = rect.top() + scroll_y - 100.0;
+                                window.scroll_with_scroll_to_options(
+                                    web_sys::ScrollToOptions::new()
+                                        .top(y)
+                                        .behavior(web_sys::ScrollBehavior::Smooth),
+                                );
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    });
 
     let render_part = if *visible.get() {
         rsx!(div {
@@ -48,7 +89,8 @@ pub fn ExpandableCard(cx: Scope<ExpandableCardProps>) -> Element {
     };
 
     let card = rsx!(div {
-        onclick: |_| visible.set(!*visible.get()),
+        id: element.id.as_str(),
+        onclick:  move |_| visible.set(!*visible.get()),
         div {
             class: class,
             div {
