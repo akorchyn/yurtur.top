@@ -1,6 +1,10 @@
+use std::str::FromStr;
+
 use dioxus::prelude::*;
 use dioxus_markdown::Markdown;
 use web_sys::DomRect;
+
+use crate::components::tag::Tag;
 
 #[derive(Props, PartialEq)]
 pub struct ExpandableCardProps {
@@ -24,6 +28,15 @@ pub fn ExpandableCard(cx: Scope<ExpandableCardProps>) -> Element {
     let visible = use_state(cx, || false);
     let is_inited = use_state(cx, || false);
     let element = cx.props;
+
+    let mut tags: Vec<String> = cx
+        .props
+        .tags
+        .split_whitespace()
+        .map(|tag| String::from_str(tag).unwrap())
+        .collect();
+    tags.sort();
+    let tags = tags.into_iter().map(|tag| rsx!(Tag { text: tag }));
 
     // Use an effect to reset the scroll when the card is closed
     use_effect(cx, (visible, &element.id), |(visible, id)| {
@@ -109,8 +122,8 @@ pub fn ExpandableCard(cx: Scope<ExpandableCardProps>) -> Element {
             }
             render_part
             div {
-                class: "flex flex-wrap justify-start text-xs py-2 text-third",
-                element.tags.as_str()
+                class: "flex flex-wrap justify-start text-xs py-2 gap-y-1",
+                tags
             }
             div {
                 class: "flex justify-end text-sm text-main group-hover:underline",
