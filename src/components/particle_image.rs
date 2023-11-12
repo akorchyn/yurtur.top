@@ -15,20 +15,22 @@ pub fn ParticleImage(cx: Scope<Props>) -> Element {
         to_owned![props];
         async move {
             let (window, canvas, context, parent) = start_render_loop();
-            let particles = std::sync::Arc::new(std::cell::RefCell::new(vec![]));
             let mouse: Rc<_> = Rc::new(Cell::new(Mouse::new(f64::INFINITY, f64::INFINITY)));
+            let mouse_tmp = mouse.clone();
+            let image_width = props.image.width();
 
             // Should be alive for the whole time
             let _closure = {
                 let canvas = canvas.clone();
                 let mouse = mouse.clone();
                 let handle_change = move |x, y| {
+                    let scale = canvas.width() as f64 / image_width as f64;
                     let rect = canvas.get_bounding_client_rect();
                     let scale_x = canvas.width() as f64 / rect.width();
                     let scale_y = canvas.height() as f64 / rect.height();
                     mouse.set(Mouse::new(
-                        (x as f64 - rect.left()) * scale_x,
-                        (y as f64 - rect.top()) * scale_y,
+                        (x as f64 - rect.left()) * scale_x / scale,
+                        (y as f64 - rect.top()) * scale_y / scale,
                     ));
                 };
 
@@ -46,7 +48,11 @@ pub fn ParticleImage(cx: Scope<Props>) -> Element {
                         }
                     });
 
-                window
+                let mouse_leave = Closure::<dyn FnMut(_)>::new(move |_: web_sys::MouseEvent| {
+                    mouse_tmp.set(Mouse::new(f64::INFINITY, f64::INFINITY));
+                });
+
+                parent
                     .add_event_listener_with_callback(
                         "mousemove",
                         mouse_closure.as_ref().unchecked_ref(),
@@ -60,14 +66,19 @@ pub fn ParticleImage(cx: Scope<Props>) -> Element {
                     )
                     .unwrap();
 
-                (mouse_closure, touch_closure)
+                parent.add_event_listener_with_callback(
+                    "mouseleave",
+                    mouse_leave.as_ref().unchecked_ref(),
+                );
+                (mouse_closure, touch_closure, mouse_leave)
             };
-            fill_particles(&mut particles.borrow_mut(), &props, &canvas);
-            render_loop(&context, &particles.borrow());
+            let mut particles = fill_particles(&props);
+            let scale = canvas.width() as f64 / props.image.width() as f64;
+            render_loop(&context, &particles, scale);
             loop {
                 let mut any = false;
                 // Update particles
-                for particle in particles.borrow_mut().iter_mut() {
+                for particle in particles.iter_mut() {
                     any |= particle.update(mouse.get());
                 }
 
@@ -77,13 +88,13 @@ pub fn ParticleImage(cx: Scope<Props>) -> Element {
                     context.clear_rect(0., 0., canvas.width() as f64, canvas.height() as f64);
                     canvas.set_width(parent.client_width() as u32);
                     canvas.set_height(parent.client_height() as u32);
-                    fill_particles(&mut particles.borrow_mut(), &props, &canvas);
                     any = true;
                 }
 
                 if any {
                     context.clear_rect(0., 0., canvas.width() as f64, canvas.height() as f64);
-                    render_loop(&context, &particles.borrow());
+                    let scale = canvas.width() as f64 / props.image.width() as f64;
+                    render_loop(&context, &particles, scale);
                 }
                 async_std::task::sleep(Duration::from_millis(10)).await;
             }
@@ -102,31 +113,25 @@ pub fn ParticleImage(cx: Scope<Props>) -> Element {
     cx.render(rsx)
 }
 
-fn fill_particles(
-    particles: &mut Vec<Particle>,
-    props: &Props,
-    canvas: &web_sys::HtmlCanvasElement,
-) {
+fn fill_particles(props: &Props) -> Vec<Particle> {
     let mut skip = 0;
-    let x_scale_canvas = props.image.width() as f64 / canvas.width() as f64;
-    let y_scale_canvas = props.image.height() as f64 / canvas.height() as f64;
-    particles.clear();
-    for y in 0..canvas.width() {
-        for x in 0..canvas.height() {
+
+    let mut particles = Vec::new();
+    for y in 0..props.image.width() {
+        for x in 0..props.image.height() {
             if skip > 0 {
                 skip -= 1;
                 continue;
             }
-            let tmp_x = (x as f64 * x_scale_canvas).floor() as u32;
-            let tmp_y = (y as f64 * y_scale_canvas).floor() as u32;
-            if props.image.get_pixel(tmp_x, tmp_y).0[0] == 255 {
+            if props.image.get_pixel(x, y).0[0] == 255 {
                 particles.push(Particle::new(x.into(), y.into()));
-                if y > 0 && y < canvas.height() - 1 && x > 0 && x < canvas.width() - 1 {
-                    skip = (y % 10) + (x % 10);
+                if y > 0 && y < props.image.height() - 1 && x > 0 && x < props.image.width() - 1 {
+                    skip = y as usize % 10 + x as usize % 10;
                 }
             }
         }
     }
+    particles
 }
 
 fn start_render_loop() -> (
@@ -160,19 +165,22 @@ fn start_render_loop() -> (
     (window, canvas, context, parent)
 }
 
-fn render_loop(context: &web_sys::CanvasRenderingContext2d, particles: &Vec<Particle>) {
+fn render_loop(context: &web_sys::CanvasRenderingContext2d, particles: &Vec<Particle>, scale: f64) {
+    let particle_radius = 1.0 * scale;
     for particle in particles {
-        particle.draw(context);
+        particle.draw(context, scale, particle_radius);
     }
+
+    let THRESHOLD: f64 = 10.0;
+    let threshold: f64 = THRESHOLD / scale;
 
     // Connect particles
     'top: for (i, particle) in particles.iter().enumerate() {
-        let mut connections = 10;
+        let mut connections = 5;
         for other_particle in particles.iter().skip(i + 1) {
             let dx = particle.x - other_particle.x;
             let dy = particle.y - other_particle.y;
             let distance = (dx * dx + dy * dy).sqrt();
-            const THRESHOLD: f64 = 10.;
             if distance < THRESHOLD {
                 let opacity = 1. - distance / THRESHOLD;
 
@@ -180,8 +188,8 @@ fn render_loop(context: &web_sys::CanvasRenderingContext2d, particles: &Vec<Part
                 context.set_stroke_style(&JsValue::from_str(
                     format!("rgba(240, 140, 174, {})", opacity).as_str(),
                 ));
-                context.move_to(particle.x, particle.y);
-                context.line_to(other_particle.x, other_particle.y);
+                context.move_to(particle.x * scale, particle.y * scale);
+                context.line_to(other_particle.x * scale, other_particle.y * scale);
                 context.stroke();
 
                 connections -= 1;
@@ -225,10 +233,12 @@ impl Particle {
         }
     }
 
-    fn draw(&self, context: &web_sys::CanvasRenderingContext2d) {
+    fn draw(&self, context: &web_sys::CanvasRenderingContext2d, scale: f64, scaled_radius: f64) {
         context.set_fill_style(&JsValue::from_str("#f08cae"));
         context.begin_path();
-        context.arc(self.x, self.y, 1.0, 0.0, PI * 2.0).unwrap();
+        context
+            .arc(self.x * scale, self.y * scale, scaled_radius, 0.0, PI * 2.0)
+            .unwrap();
         context.close_path();
         context.fill();
     }
