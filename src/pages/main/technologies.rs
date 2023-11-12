@@ -16,17 +16,17 @@ pub fn Technologies(cx: Scope) -> Element {
     let rsx = rsx!(
         div {
             h1 {
-                class: "font-bold text-xl md:text-4xl text-center p-2 md:p-8",
+                class: "font-bold text-xl lg:text-4xl text-center p-2 lg:p-8",
                 "Technologies"
 
             }
             div {
-                class: "flex justify-evenly md:items-center flex-wrap space-x-4",
+                class: "flex justify-evenly lg:items-center flex-wrap space-x-4",
                 for obj in technologies {
                     RotatableIconCard {
                         tooltip: obj.title,
                         src: obj.src,
-                        size_class: "w-24 h-24 md:w-48 md:h-48".to_string(),
+                        size_class: "w-24 h-24 lg:w-48 lg:h-48".to_string(),
                         description: obj.description
                     }
                 }

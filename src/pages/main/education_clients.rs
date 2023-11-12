@@ -75,9 +75,9 @@ pub fn EducationClientsTimeline(cx: Scope) -> Element {
     });
 
     let rsx = rsx! { div {
-        class: "mb-32 mt-5 m-5 md:m-10 md:mt-32 md:mb-32",
+        class: "mb-32 mt-5 m-5 lg:m-10 lg:mt-32 lg:mb-32",
         h1 {
-            class: "md:text-3xl text-xl font-bold text-center text-main",
+            class: "lg:text-3xl text-xl font-bold text-center text-main",
             "Experience timeline"
         }
         // Only show this on large screens
@@ -91,7 +91,7 @@ pub fn EducationClientsTimeline(cx: Scope) -> Element {
             }
         }
         div {
-            class: "mt-5 md:mt-10 space-y-4 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px lg:before:mx-auto lg:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-main before:to-transparent",
+            class: "mt-5 lg:mt-10 space-y-4 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px lg:before:mx-auto lg:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-main before:to-transparent",
             elements
         }
     }};

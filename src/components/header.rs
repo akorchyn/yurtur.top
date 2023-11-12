@@ -8,7 +8,7 @@ pub fn Header(cx: Scope) -> Element {
             a {
                 href: "/",
                 h1 {
-                    class: "text-2xl text-white font-bold md:ml-16",
+                    class: "text-2xl text-white font-bold lg:ml-16",
                     "Yurtur"
                     span {
                         class: "ml-1 text-xl font-normal",

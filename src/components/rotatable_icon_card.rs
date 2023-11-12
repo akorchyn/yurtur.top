@@ -29,9 +29,9 @@ pub fn RotatableIconCard(cx: Scope<RotatableIconCardProps>) -> Element {
                     div {
                         class: "absolute inset-0 min-h-full h-fit w-full rounded-xl bg-main/80 [transform:rotateY(180deg)] [backface-visibility:hidden]",
                         div {
-                            class: "flex min-h-full flex-col justify-center items-center text-center text-sm md:text-xl",
+                            class: "flex min-h-full flex-col justify-center items-center text-center text-sm lg:text-xl",
                             h1 {
-                                class: "font-bold text-slate-100 py-1 md:py-5",
+                                class: "font-bold text-slate-100 py-1 lg:py-5",
                                 cx.props.tooltip.as_str()
                             }
                             div {
