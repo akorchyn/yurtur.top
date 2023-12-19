@@ -38,10 +38,10 @@ pub fn Main(cx: Scope) -> Element {
                 }
             }
 
-            ParticleImage {
-                class: "w-32 h-32 lg:w-64 lg:h-64".to_string(),
-                image: image,
-            }
+            // ParticleImage {
+            //     class: "w-32 h-32 lg:w-64 lg:h-64".to_string(),
+            //     image: image,
+            // }
         }
         Technologies {}
         EducationClientsTimeline {}
