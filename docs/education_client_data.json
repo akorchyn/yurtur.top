@@ -57,7 +57,7 @@
         "timeline": "2019 - 2023",
         "is_education": true,
         "type": "Bachelor's degree",
-        "description": "Pretium lectus quam id leo. Urna et pharetra aliquam vestibulum morbi blandit cursus risus",
+        "description": "Bachelor of Software Engineering in one of the most prestigious universities in Ukraine.",
         "url": "/md/kpi.md"
     },
     {
@@ -80,7 +80,7 @@
         "timeline": "2018-2020",
         "is_education": true,
         "type": "Programming school",
-        "description": "Pretium lectus quam id leo. Urna et pharetra aliquam vestibulum morbi blandit cursus risus",
+        "description": "Ecole 42 is a renowned computer programming school originally founded in France. It is known for its innovative and unconventional approach to education in the field of computer science and coding.",
         "url": "/md/ecole42.md"
     }
 ]
