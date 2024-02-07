@@ -6,14 +6,7 @@ pub mod technologies;
 use education_clients::EducationClientsTimeline;
 use technologies::Technologies;
 
-use crate::components::particle_image::ParticleImage;
-
 pub fn Main(cx: Scope) -> Element {
-    let image = include_bytes!("../../../public/heart.png");
-
-    let image = image::load_from_memory(image).unwrap();
-    let image = image.to_rgba8();
-
     let rsx = rsx! { div {
         class: "bg-secondary text-main w-full p-safe-or-4 lg:p-safe-or-16",
         div {
@@ -37,11 +30,6 @@ pub fn Main(cx: Scope) -> Element {
                     "Protocol Engineer"
                 }
             }
-
-            // ParticleImage {
-            //     class: "w-32 h-32 lg:w-64 lg:h-64".to_string(),
-            //     image: image,
-            // }
         }
         Technologies {}
         EducationClientsTimeline {}

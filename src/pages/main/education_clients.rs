@@ -17,6 +17,7 @@ struct Type {
     company: Option<String>,
     via: Option<String>,
     tags: Option<String>,
+    ended_year: Option<i32>,
 }
 
 async fn load_content(key: String, url: String, state: UseRef<HashMap<String, Option<String>>>) {
@@ -43,10 +44,14 @@ pub fn EducationClientsTimeline(cx: Scope) -> Element {
     let state = use_ref(cx, HashMap::<String, Option<String>>::new);
 
     let elements = data.into_iter().map(|element| {
-        let classes = if element.is_education {
-            "relative flex items-stretch items-center justify-between lg:justify-normal lg:flex-row-reverse"
+        let (classes, line, label) = if element.is_education {
+            ("relative flex items-stretch items-center justify-between lg:justify-normal lg:flex-row-reverse",
+             "lg:block hidden absolute top-[10%] right-[10%] left-1/2 border-main border-b-4 border-dotted z-0 mx-auto h-0.5 bg-transparent lg:flex-row-reverse",
+            "lg:block hidden absolute -top-8 left-5 transform bg-main text-white px-2")
         } else {
-            "relative flex items-stretch items-center justify-between lg:justify-normal"
+            ("relative flex items-stretch items-center justify-between lg:justify-normal",
+            "lg:block hidden absolute top-[10%] left-[10%] right-1/2 border-main border-b-4 border-dotted z-0 mx-auto h-0.5 bg-transparent",
+            "lg:block hidden absolute -top-8 right-5 transform bg-main text-white px-2")
         };
         let suffix = match (element.company, element.via) {
             (Some(company), Some(via)) => format!("at {} via {}", company, via),
@@ -62,14 +67,26 @@ pub fn EducationClientsTimeline(cx: Scope) -> Element {
                 load_content(element.id.clone(), element.url.clone(), state.clone())
             },
 
-            ExpandableCard {
-                id: element.id.clone(),
-                type_: element.type_,
-                right_top: element.timeline,
-                header: name,
-                description: element.description,
-                markdown_details: state.read().get(&element.id).unwrap_or(&None).clone().unwrap_or_else(|| "Loading".to_string()),
-                tags: element.tags.unwrap_or_default(),
+            div {
+                ExpandableCard {
+                    id: element.id.clone(),
+                    type_: element.type_,
+                    right_top: element.timeline,
+                    header: name,
+                    description: element.description,
+                    markdown_details: state.read().get(&element.id).unwrap_or(&None).clone().unwrap_or_else(|| "Loading".to_string()),
+                    tags: element.tags.unwrap_or_default(),
+                }
+
+                div {
+                    class: line,
+                    p {
+                        class: label,
+                        element.ended_year.map(|y| y.to_string()).unwrap_or_else(|| "Present".to_string())
+                    
+                    }
+                }
+
             }
         }}
     });
