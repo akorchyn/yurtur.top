@@ -101,15 +101,15 @@ pub fn ExpandableCard(cx: Scope<ExpandableCardProps>) -> Element {
     };
 
     let class = if *visible.get() {
-        "relative z-10 w-[calc(100%-2rem)] max-w-xl group bg-white p-4 rounded border transition-all duration-1000 transform cursor-pointer shadow-lg  shadow-lg duration-1000 shadow-black/30 ease-in-out expanded scale-100"
+        "shadow-lg scale-100"
     } else {
-        "relative z-10 w-[calc(100%-2rem)] max-w-xl group bg-white p-4 rounded border shadow-none transition-all duration-1000 transform cursor-pointer duration-1000 ease-in-out hover:shadow-lg hover:shadow-black/30 scale-90"
+        "shadow-none hover:shadow-lg scale-90"
     };
 
     let card = rsx!(div {
         id: element.id.as_str(),
         onclick:  move |_| visible.set(!*visible.get()),
-            class: class,
+            class: "relative z-10 w-[calc(100%-2rem)] max-w-xl group bg-white p-4 shadow-black/30 rounded border transition-all duration-1000 transform cursor-pointer ease-in-out scale-100 {class}",
             div {
                 class: "flex items-center justify-between text-xs text-main",
                 div {

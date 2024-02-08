@@ -9,15 +9,15 @@ pub fn base_url() -> String {
 }
 
 fn main() {
-    let log_config = wasm_logger::Config::new(log::Level::Warn);
+    let log_config = wasm_logger::Config::new(log::Level::Info);
     wasm_logger::init(log_config);
     dioxus_web::launch(App);
 }
 
 fn App(cx: Scope) -> Element {
     let rsx = rsx! {
-
         div {
+            class: "h-dvh bg-secondary",
             components::header::Header {}
             pages::main::Main {}
             components::footer::Footer {}

@@ -44,15 +44,6 @@ pub fn EducationClientsTimeline(cx: Scope) -> Element {
     let state = use_ref(cx, HashMap::<String, Option<String>>::new);
 
     let elements = data.into_iter().map(|element| {
-        let (classes, line, label) = if element.is_education {
-            ("relative flex items-stretch items-center justify-between lg:justify-normal lg:flex-row-reverse",
-             "lg:block hidden absolute top-[10%] right-[10%] left-1/2 border-main border-b-4 border-dotted z-0 mx-auto h-0.5 bg-transparent lg:flex-row-reverse",
-            "lg:block hidden absolute -top-8 left-5 transform bg-main text-white px-2")
-        } else {
-            ("relative flex items-stretch items-center justify-between lg:justify-normal",
-            "lg:block hidden absolute top-[10%] left-[10%] right-1/2 border-main border-b-4 border-dotted z-0 mx-auto h-0.5 bg-transparent",
-            "lg:block hidden absolute -top-8 right-5 transform bg-main text-white px-2")
-        };
         let suffix = match (element.company, element.via) {
             (Some(company), Some(via)) => format!("at {} via {}", company, via),
             (Some(company), None) => format!("at {}", company),
@@ -61,8 +52,12 @@ pub fn EducationClientsTimeline(cx: Scope) -> Element {
         };
         let name = element.position + " " + &suffix;
 
+        let reverse = if element.is_education { "lg:flex-row-reverse"} else { "" };
+        let line = if element.is_education { "right-[10%] left-1/2"  } else { "left-[10%] right-1/2"  };
+        let label = if element.is_education { "left-5" } else { "right-5" };
+
         rsx! {div {
-            class: classes,
+            class: "relative flex {reverse} left-1/4",
             onmouseenter: move |_| {
                 load_content(element.id.clone(), element.url.clone(), state.clone())
             },
@@ -79,11 +74,10 @@ pub fn EducationClientsTimeline(cx: Scope) -> Element {
                 }
 
                 div {
-                    class: line,
+                    class: "lg:block hidden absolute top-[10%] border-main border-b-4 border-dotted z-0 mx-auto h-0.5 {line}",
                     p {
-                        class: label,
+                        class: "lg:block hidden absolute -top-8 transform bg-main text-white px-2 {label}",
                         element.ended_year.map(|y| y.to_string()).unwrap_or_else(|| "Present".to_string())
-                    
                     }
                 }
 
@@ -108,7 +102,7 @@ pub fn EducationClientsTimeline(cx: Scope) -> Element {
             }
         }
         div {
-            class: "mt-5 lg:mt-10 space-y-4 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px lg:before:mx-auto lg:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-main before:to-transparent",
+            class: "mt-5 lg:mt-10 space-y-4 relative flex flex-col lg:block items-center before:absolute before:inset-0 before:ml-5 before:-translate-x-px lg:before:mx-auto lg:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-main before:to-transparent",
             elements
         }
     }};

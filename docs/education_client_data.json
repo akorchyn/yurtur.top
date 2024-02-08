@@ -35,7 +35,7 @@
         "type": "Contract",
         "description": "Safe and secure centralized cross-chain bridge for EVM and non-EVM blockchains. Supporting Ethereum, Casper Network, Avalanch and many more",
         "url": "/md/tricorn.md",
-        "tags": "#Rust #BlockchainInteroperability #Solidity #CasperNetwork #Ethereum #Avalanche #SmartContracts #GoLang"
+        "tags": "#Rust #Interoperability #Solidity #CasperNetwork #Ethereum #Avalanche #SmartContracts #GoLang"
     },
     {
         "id": "ultimate division",
@@ -63,7 +63,7 @@
         "type": "Outsource company EPAM",
         "description": "Real-time data distribution system for financial markets.",
         "url": "/md/epam.md",
-        "tags": "#CPP #RealTimeData #Jenkins #CI/CD #Support #Automation #SunOS #PerformanceOptimization"
+        "tags": "#CPP #RealTimeData #Jenkins #CI/CD #Support #Automation #SunOS #Optimization"
     },
     {
         "id": "intellias",
@@ -77,7 +77,7 @@
         "type": "Outsource company Intellias",
         "description": "Leader of the map-making industry. Here Technologies is a company that provides mapping and location data and related services to individuals and companies.",
         "url": "/md/intellias.md",
-        "tags": "#C++ #Mobile #Android #SDK #ClientSupport #Routing #PerformanceOptimization"
+        "tags": "#C++ #Mobile #Android #SDK #ClientSupport #Routing #Optimization"
     },
     {
         "id": "ecole42",
