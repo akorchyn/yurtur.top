@@ -18,10 +18,8 @@ enum Route {
     #[layout(Layout)]
         #[route("/")]
         Main {},
-        #[nest("/#")]
-            #[route("/#/valentine")]
-            Valentine {},
-        #[end_nest]
+        #[route("/valentine")]
+        Valentine {},
     #[end_layout]
     #[route("/:..route")]
     PageNotFound { route: Vec<String> },
