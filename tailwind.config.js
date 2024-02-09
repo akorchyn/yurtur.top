@@ -16,6 +16,10 @@ module.exports = {
       minWidth: {
         '96': '24rem',
         '32': '8rem',
+      },
+      transitionTimingFunction: {
+        'fade-in': 'cubic-bezier(0.55, 0.085, 0.68, 0.53)',
+        'fade-out': 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
       }
     },
   },

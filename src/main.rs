@@ -21,16 +21,18 @@ enum Route {
         #[route("/valentine")]
         Valentine {},
     #[end_layout]
-    #[route("/404")]
-    #[redirect("/", || Route::Main {})]
-    NotFound {},
+    #[route("/:..route")]
+    PageNotFound { route: Vec<String> },
 }
 
 #[component]
-pub fn NotFound(cx: Scope) -> Element {
+fn PageNotFound(cx: Scope, route: Vec<String>) -> Element {
     render! {
-        div {
-            "404"
+        h1 { "Page not found" }
+        p { "We are terribly sorry, but the page you requested doesn't exist." }
+        pre {
+            color: "red",
+            "log:\nattemped to navigate to: {route:?}"
         }
     }
 }
