@@ -9,6 +9,7 @@ struct UsedTechnologies {
     description: String,
 }
 
+#[component]
 pub fn Technologies(cx: Scope) -> Element {
     let technologies: Vec<UsedTechnologies> =
         serde_json::from_str(include_str!("../../../public/technologies.json")).ok()?;

@@ -6,6 +6,7 @@ pub mod technologies;
 use education_clients::EducationClientsTimeline;
 use technologies::Technologies;
 
+#[component]
 pub fn Main(cx: Scope) -> Element {
     let rsx = rsx! { div {
         class: "bg-secondary text-main w-full p-safe-or-4 lg:p-safe-or-16",

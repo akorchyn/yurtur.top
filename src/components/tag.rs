@@ -6,6 +6,7 @@ pub struct Props {
 }
 
 // Define a Tag component for individual tags
+#[component]
 pub fn Tag(cx: Scope<Props>) -> Element {
     cx.render(rsx! {
         span {

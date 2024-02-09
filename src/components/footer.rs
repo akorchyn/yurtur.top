@@ -5,6 +5,7 @@ use dioxus_free_icons::{
     Icon,
 };
 
+#[component]
 pub fn Footer(cx: Scope) -> Element {
     let rsx = rsx!(footer {
         class: "fixed bottom-0 w-full bg-main p-safe-or-2 z-50 ",

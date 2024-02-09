@@ -1,5 +1,6 @@
 use dioxus::prelude::*;
 
+#[component]
 pub fn Header(cx: Scope) -> Element {
     let rsx = rsx! {
             header {

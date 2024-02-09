@@ -8,6 +8,7 @@ pub struct RotatableIconCardProps {
     description: String,
 }
 
+#[component]
 pub fn RotatableIconCard(cx: Scope<RotatableIconCardProps>) -> Element {
     let class_state = use_state(cx, || {
         cx.props.size_class.clone() + " group scale:100 hover:scale-110"

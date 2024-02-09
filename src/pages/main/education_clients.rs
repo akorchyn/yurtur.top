@@ -38,6 +38,7 @@ async fn load_content(key: String, url: String, state: UseRef<HashMap<String, Op
     }
 }
 
+#[component]
 pub fn EducationClientsTimeline(cx: Scope) -> Element {
     let data: Vec<Type> =
         serde_json::from_str(include_str!("../../../public/education_client_data.json")).ok()?;
@@ -57,7 +58,7 @@ pub fn EducationClientsTimeline(cx: Scope) -> Element {
         let label = if element.is_education { "left-5" } else { "right-5" };
 
         rsx! {div {
-            class: "relative flex {reverse} left-1/4",
+            class: "relative flex {reverse} ",
             onmouseenter: move |_| {
                 load_content(element.id.clone(), element.url.clone(), state.clone())
             },
@@ -102,7 +103,7 @@ pub fn EducationClientsTimeline(cx: Scope) -> Element {
             }
         }
         div {
-            class: "mt-5 lg:mt-10 space-y-4 relative flex flex-col lg:block items-center before:absolute before:inset-0 before:ml-5 before:-translate-x-px lg:before:mx-auto lg:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-main before:to-transparent",
+            class: "mt-5 lg:mt-10 space-y-4 relative flex flex-col before:absolute before:inset-0 before:ml-5 before:-translate-x-px lg:before:mx-auto lg:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-main before:to-transparent",
             elements
         }
     }};
