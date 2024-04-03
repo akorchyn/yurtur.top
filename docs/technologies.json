@@ -2,7 +2,7 @@
     {
         "title": "Rust exp",
         "src": "/icons/rust.svg",
-        "description": "GGx, Tricorn, Ultimate Division"
+        "description": "GGx, NDC, Tricorn, Ultimate Division"
     },
     {
         "title": "C++ Exp",
@@ -12,6 +12,6 @@
     {
         "title": "Blockchain exp",
         "src": "/icons/blockchain.svg",
-        "description": "GGx, Substrate, Casper"
+        "description": "GGx, Substrate, Casper, Near, Secret Network"
     }
 ]
