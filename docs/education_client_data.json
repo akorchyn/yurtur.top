@@ -4,11 +4,11 @@
         "position": "Senior Rust Engineer",
         "company": "Near NDC",
         "started_year": 2024,
-        "ended_year": null,
-        "timeline": "Mar 2024 - Present",
+        "ended_year": 2024,
+        "timeline": "Feb 2024 - May 2024",
         "is_education": false,
         "type": "DAO",
-        "description": "Decentralized Governance on NEAR. Worked as part of the DAO service team",
+        "description": "Decentralized Governance on NEAR. Worked as part of the DAO service team. Developed private stake-weighted voting solution for the upcoming election",
         "url": "/md/ndc.md",
         "tags": "#Rust #Js #NEAR #SecretNetwork #SQL #Blockchain #DAO"
     },
@@ -21,7 +21,7 @@
         "timeline": "Nov 2022 - Mar 2024",
         "is_education": false,
         "type": "Product company",
-        "description": "Interchain Infrastructure Protocol. IBC, MPC, Scnorr signatures, ZK Rollups, Advanced Liquidity Routing",
+        "description": "GGx is a innovative layer-0 blockchain. I was core protocol engineer. Developed the chain from the scratch, worked on eth relayer, iterative merkle proof, pallets",
         "url": "/md/ggx.md",
         "tags": "#Rust #Js #Nix #Substrate #IBC #Ethereum #MPC #ZKProofs #Blockchain #ProtocolDesign #Solidity"
     },

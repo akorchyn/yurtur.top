@@ -6,4 +6,4 @@ KPI specializes in engineering and technical sciences, offering a wide range of 
 
 Diploma project: [Web Application for Cryptocurrency Price Alerts and Price Monitoring](https://github.com/akorchyn/CoinSight)
 
-Total mark: **84**
+Total mark: *84*
