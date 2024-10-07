@@ -1,6 +1,5 @@
 #![allow(non_snake_case)]
 use dioxus::prelude::*;
-use dioxus_router::prelude::*;
 
 mod components;
 mod pages;
@@ -10,55 +9,32 @@ pub fn base_url() -> String {
 }
 
 use pages::main::Main;
-use pages::valentine::Valentine;
 
-#[derive(Routable, Clone)]
-#[rustfmt::skip]
-enum Route {
-    #[layout(Layout)]
-        #[route("/")]
-        Main {},
-        #[route("/valentine")]
-        Valentine {},
-    #[end_layout]
-    #[route("/:..route")]
-    PageNotFound { route: Vec<String> },
-}
+const _TAILWIND_URL: &str = manganis::mg!(file("public/tailwind.css"));
+const _: &str = manganis::mg!(font().families(["Roboto"]));
 
 #[component]
-fn PageNotFound(cx: Scope, route: Vec<String>) -> Element {
-    render! {
+fn PageNotFound(route: Vec<String>) -> Element {
+    rsx! {
         h1 { "Page not found" }
         p { "We are terribly sorry, but the page you requested doesn't exist." }
-        pre {
-            color: "red",
-            "log:\nattemped to navigate to: {route:?}"
-        }
+        pre { color: "red", "log:\nattemped to navigate to: {route:?}" }
     }
 }
 
 fn main() {
     let log_config = wasm_logger::Config::new(log::Level::Info);
     wasm_logger::init(log_config);
-    dioxus_web::launch(App);
+
+    launch(App);
 }
 
-#[component]
-fn App(cx: Scope) -> Element {
-    render! {
-        Router::<Route> {}
-    }
-}
-
-#[component]
-fn Layout(cx: Scope) -> Element {
-    let rsx = rsx! {
-        div {
-            class: "h-dvh bg-secondary",
+fn App() -> Element {
+    rsx! {
+        div { class: "h-dvh bg-secondary",
             components::header::Header {}
-            Outlet::<Route> {}
+            Main {}
             components::footer::Footer {}
         }
-    };
-    cx.render(rsx)
+    }
 }

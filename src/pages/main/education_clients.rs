@@ -20,7 +20,11 @@ struct Type {
     ended_year: Option<i32>,
 }
 
-async fn load_content(key: String, url: String, state: UseRef<HashMap<String, Option<String>>>) {
+async fn load_content(
+    key: String,
+    url: String,
+    mut state: Signal<HashMap<String, Option<String>>>,
+) {
     if state.read().get(&key).is_some() {
         return;
     }
@@ -38,11 +42,10 @@ async fn load_content(key: String, url: String, state: UseRef<HashMap<String, Op
     }
 }
 
-#[component]
-pub fn EducationClientsTimeline(cx: Scope) -> Element {
+pub fn EducationClientsTimeline() -> Element {
     let data: Vec<Type> =
         serde_json::from_str(include_str!("../../../public/education_client_data.json")).ok()?;
-    let state = use_ref(cx, HashMap::<String, Option<String>>::new);
+    let state = use_signal(|| HashMap::<String, Option<String>>::new());
 
     let elements = data.into_iter().map(|element| {
         let suffix = match (element.company, element.via) {
@@ -57,56 +60,48 @@ pub fn EducationClientsTimeline(cx: Scope) -> Element {
         let line = if element.is_education { "right-[10%] left-1/2"  } else { "left-[10%] right-1/2"  };
         let label = if element.is_education { "left-5" } else { "right-5" };
 
-        rsx! {div {
-            class: "relative flex {reverse} ",
-            onmouseenter: move |_| {
-                load_content(element.id.clone(), element.url.clone(), state.clone())
-            },
-
+        rsx! {
             div {
-                ExpandableCard {
-                    id: element.id.clone(),
-                    type_: element.type_,
-                    right_top: element.timeline,
-                    header: name,
-                    description: element.description,
-                    markdown_details: state.read().get(&element.id).unwrap_or(&None).clone().unwrap_or_else(|| "Loading".to_string()),
-                    tags: element.tags.unwrap_or_default(),
-                }
+                class: "relative flex {reverse} ",
+                onmouseenter: move |_| { load_content(element.id.clone(), element.url.clone(), state.clone()) },
 
                 div {
-                    class: "lg:block hidden absolute top-[10%] border-main border-b-4 border-dotted z-0 mx-auto h-0.5 {line}",
-                    p {
-                        class: "lg:block hidden absolute -top-8 transform bg-main text-white px-2 {label}",
-                        element.ended_year.map(|y| y.to_string()).unwrap_or_else(|| "Present".to_string())
+                    ExpandableCard {
+                        id: element.id.clone(),
+                        type_: element.type_,
+                        right_top: element.timeline,
+                        header: name,
+                        description: element.description,
+                        markdown_details: state
+                            .read()
+                            .get(&element.id)
+                            .unwrap_or(&None)
+                            .clone()
+                            .unwrap_or_else(|| "Loading".to_string()),
+                        tags: element.tags.unwrap_or_default()
+                    }
+
+                    div { class: "lg:block hidden absolute top-[10%] border-main border-b-4 border-dotted z-0 mx-auto h-0.5 {line}",
+                        p { class: "lg:block hidden absolute -top-8 transform bg-main text-white px-2 {label}",
+                            {element.ended_year.map(|y| y.to_string()).unwrap_or_else(|| "Present".to_string())}
+                        }
                     }
                 }
-
             }
-        }}
+        }
     });
 
-    let rsx = rsx! { div {
-        class: "mb-32 mt-5 m-5 lg:m-10 lg:mt-32 lg:mb-32",
-        h1 {
-            class: "lg:text-3xl text-xl font-bold text-center text-main",
-            "Experience timeline"
-        }
-        // Only show this on large screens
-        div {
-            class: "text-2xl font-semibold text-main justify-around hidden lg:flex",
-            div {
-                "Work Experience"
+    rsx! {
+        div { class: "mb-32 mt-5 m-5 lg:m-10 lg:mt-32 lg:mb-32",
+            h1 { class: "lg:text-3xl text-xl font-bold text-center text-main", "Experience timeline" }
+            // Only show this on large screens
+            div { class: "text-2xl font-semibold text-main justify-around hidden lg:flex",
+                div { "Work Experience" }
+                div { "Education" }
             }
-            div {
-                "Education"
+            div { class: "mt-5 lg:mt-10 space-y-4 relative flex flex-col before:absolute before:inset-0 before:ml-5 before:-translate-x-px lg:before:mx-auto lg:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-main before:to-transparent",
+                {elements}
             }
         }
-        div {
-            class: "mt-5 lg:mt-10 space-y-4 relative flex flex-col before:absolute before:inset-0 before:ml-5 before:-translate-x-px lg:before:mx-auto lg:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-main before:to-transparent",
-            elements
-        }
-    }};
-
-    cx.render(rsx)
+    }
 }

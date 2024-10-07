@@ -1,0 +1,38 @@
+[
+    {
+        "year": "2024",
+        "title": "Blockchain Innovator",
+        "description": "Developed private voting for NEAR NDC",
+        "icon": "🔐"
+    },
+    {
+        "year": "2022",
+        "title": "Protocol Engineer",
+        "description": "Built innovative layer-0 blockchain at GGx",
+        "icon": "⛓️"
+    },
+    {
+        "year": "2021",
+        "title": "Financial Tech Expert",
+        "description": "Optimized real-time data systems at Refinitiv",
+        "icon": "📊"
+    },
+    {
+        "year": "2019",
+        "title": "Mapping Pioneer",
+        "description": "Enhanced location services at Here Technologies",
+        "icon": "🗺️"
+    },
+    {
+        "year": "2019",
+        "title": "Academic Achievement",
+        "description": "Started Bachelor's in Software Engineering at KPI",
+        "icon": "🎓"
+    },
+    {
+        "year": "2018",
+        "title": "Coding Innovator",
+        "description": "Joined École 42's unconventional programming school",
+        "icon": "💻"
+    }
+]

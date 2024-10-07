@@ -6,15 +6,14 @@ repository = "https://github.com/akorchyn/yurtur-top"
 edition = "2021"
 
 [dependencies]
-dioxus = "0.4"
-dioxus-web = "0.4"
-dioxus-free-icons = { version = "0.7", default-features = false, features = [
+dioxus = { version = "0.5", features = ["web"] }
+dioxus-free-icons = { version = "0.8", default-features = false, features = [
     "font-awesome-brands",
 ] }
-dioxus-router = "0.4"
-dioxus_markdown = { git = "https://github.com/DioxusLabs/markdown.git", branch = "master", version = "0.2.0" }
+dioxus-router = "0.5"
+dioxus_markdown = { git = "https://github.com/DioxusLabs/markdown.git", rev = "05b19b687fc67e1bed1a737a7d36b64393c02b66" }
 chrono = "0.4"
-reqwest = "0.11"
+reqwest = "0.12"
 log = "0.4"
 wasm-logger = "0.2.0"
 
@@ -35,16 +34,12 @@ web-sys = { version = "0.3", features = [
     'console',
     'ScrollToOptions',
 ] }
-image = "0.24"
+image = "0.25"
 
 # Data
 serde = { version = "1.0", features = ["derive"], default-features = false }
-serde_json = { verison = "1.0", features = ["alloc"], default-features = false }
+serde_json = { version = "1.0", features = ["alloc"], default-features = false }
+manganis = "0.2.2"
 
 [features]
 default = []
-
-[patch.crates-io]
-dioxus = { git = "https://github.com/DioxusLabs/dioxus.git", tag = "v0.4.3" }
-dioxus-web = { git = "https://github.com/DioxusLabs/dioxus.git", tag = "v0.4.3" }
-dioxus-router = { git = "https://github.com/DioxusLabs/dioxus.git", tag = "v0.4.3" }

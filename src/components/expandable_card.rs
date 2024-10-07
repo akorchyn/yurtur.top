@@ -6,7 +6,7 @@ use web_sys::DomRect;
 
 use crate::components::tag::Tag;
 
-#[derive(Props, PartialEq)]
+#[derive(Props, Clone, PartialEq)]
 pub struct ExpandableCardProps {
     id: String,
     type_: String,
@@ -17,20 +17,18 @@ pub struct ExpandableCardProps {
     tags: String,
 }
 
-fn is_card_visible(element: &DomRect, inner_height: f64) -> bool {
-    let top = element.top();
-    let bottom = element.bottom();
+fn is_card_visible(props: &DomRect, inner_height: f64) -> bool {
+    let top = props.top();
+    let bottom = props.bottom();
 
     top > 0.0 && bottom < inner_height
 }
 
-pub fn ExpandableCard(cx: Scope<ExpandableCardProps>) -> Element {
-    let visible = use_state(cx, || false);
-    let is_inited = use_state(cx, || false);
-    let element = cx.props;
+pub fn ExpandableCard(props: ExpandableCardProps) -> Element {
+    let mut visible = use_signal(|| None::<bool>);
+    let mut is_inited = use_signal(|| false);
 
-    let mut tags: Vec<String> = cx
-        .props
+    let mut tags: Vec<String> = props
         .tags
         .split_whitespace()
         .map(|tag| String::from_str(tag).unwrap())
@@ -39,96 +37,83 @@ pub fn ExpandableCard(cx: Scope<ExpandableCardProps>) -> Element {
     let tags = tags.into_iter().map(|tag| rsx!(Tag { text: tag }));
 
     // Use an effect to reset the scroll when the card is closed
-    use_effect(cx, (visible, &element.id), |(visible, id)| {
-        to_owned![visible, id, is_inited];
-        async move {
-            if !*is_inited.get() {
-                is_inited.set(true);
-                return;
-            }
-            if !*visible {
-                // Use web_sys to get the document and reset the scroll position
-                if let Some(window) = web_sys::window() {
-                    if let (Some(document), Some(scroll_y), Some(inner_height)) = (
-                        window.document(),
-                        window.scroll_y().ok(),
-                        window.inner_height().ok(),
-                    ) {
-                        if let (Some(element), Some(inner_height)) =
-                            (document.get_element_by_id(&id), inner_height.as_f64())
-                        {
-                            let rect: web_sys::DomRect = element.get_bounding_client_rect();
+    let id = props.id.clone();
+    use_effect(use_reactive!(|(visible, id)| {
+        if !*is_inited.read() {
+            *is_inited.write() = true;
+            return;
+        }
+        if let Some(false) = *visible.read() {
+            // Use web_sys to get the document and reset the scroll position
+            if let Some(window) = web_sys::window() {
+                if let (Some(document), Some(scroll_y), Some(inner_height)) = (
+                    window.document(),
+                    window.scroll_y().ok(),
+                    window.inner_height().ok(),
+                ) {
+                    if let (Some(props), Some(inner_height)) =
+                        (document.get_element_by_id(&id), inner_height.as_f64())
+                    {
+                        let rect: web_sys::DomRect = props.get_bounding_client_rect();
 
-                            if !is_card_visible(&rect, inner_height) {
-                                let y = rect.top() + scroll_y - 100.0;
-                                window.scroll_with_scroll_to_options(
-                                    web_sys::ScrollToOptions::new()
-                                        .top(y)
-                                        .behavior(web_sys::ScrollBehavior::Smooth),
-                                );
-                            }
+                        if !is_card_visible(&rect, inner_height) {
+                            let y = rect.top() + scroll_y - 100.0;
+                            let options = web_sys::ScrollToOptions::new();
+                            options.set_top(y);
+                            options.set_behavior(web_sys::ScrollBehavior::Smooth);
+                            window.scroll_with_scroll_to_options(&options);
                         }
                     }
                 }
             }
         }
-    });
+    }));
 
-    let render_part = if *visible.get() {
-        rsx!(div {
-            Markdown {
-                class: "prose prose-sm prose-slate prose-headings:text-sm prose-headings:font-bold prose-headings:text-slate-500 py-2",
-                content: element.markdown_details.as_str()
+    let visible_value = visible.read().unwrap_or_default();
+    let render_part = if visible_value {
+        rsx!(
+            div {
+                class: "prose prose-sm prose-slate prose-a:text-main prose-headings:text-sm prose-headings:font-bold prose-headings:text-slate-500 py-2",
+                onclick: move |_| {},
+
+                Markdown { content: props.markdown_details }
             }
-        })
+        )
     } else {
-        rsx!(div {
+        rsx!(
             div {
-                class: "text-slate-500 font-bold py-2",
-                element.header.as_str()
-            },
-            div {
-                class: "text-slate-500 text-sm",
-                element.description.as_str()
+                div { class: "text-slate-500 font-bold py-2", {props.header} }
+                div { class: "text-slate-500 text-sm", {props.description} }
             }
-        })
+        )
     };
 
-    let read_less_or_more = if *visible.get() {
+    let read_less_or_more = if visible_value {
         "Read less"
     } else {
         "Read more"
     };
 
-    let class = if *visible.get() {
+    let class = if visible_value {
         "shadow-lg scale-100"
     } else {
         "shadow-none hover:shadow-lg scale-90"
     };
 
-    let card = rsx!(div {
-        id: element.id.as_str(),
-        onclick:  move |_| visible.set(!*visible.get()),
+    rsx!(
+        div {
+            id: props.id,
+            onclick: move |_| *visible.write() = Some(!visible_value),
             class: "relative z-10 w-[calc(100%-2rem)] max-w-xl group bg-white p-4 shadow-black/30 rounded border transition-all duration-1000 transform cursor-pointer ease-in-out scale-100 {class}",
-            div {
-                class: "flex items-center justify-between text-xs text-main",
-                div {
-                    element.type_.as_str()
-                }
-                time {
-                    element.right_top.as_str()
-                }
+            div { class: "flex items-center justify-between text-xs text-main",
+                div { {props.type_} }
+                time { {props.right_top} }
             }
-            render_part
-            div {
-                class: "flex flex-wrap justify-start text-xs py-2 gap-y-1",
-                tags
+            {render_part},
+            div { class: "flex flex-wrap justify-start text-xs py-2 gap-y-1", {tags} }
+            div { class: "flex justify-end text-sm text-main group-hover:underline",
+                {read_less_or_more}
             }
-            div {
-                class: "flex justify-end text-sm text-main group-hover:underline",
-                read_less_or_more
-            }
-    });
-
-    cx.render(card)
+        }
+    )
 }
