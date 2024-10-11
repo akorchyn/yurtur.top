@@ -55,10 +55,9 @@ pub fn WhimsicalCVTimeline() -> Element {
         serde_json::from_str(include_str!("../../../public/timeline_data.json")).ok()?;
 
     rsx! {
-        div { class: "p-8 bg-gradient-to-r from-color-main via-color-secondary to-color-third rounded-xl",
             h2 { class: "text-3xl font-bold text-main mb-8 text-center", "Journey" }
             div { class: "flex justify-between items-center relative",
-                div { class: "absolute top-1/2 left-0 right-0 h-1 bg-third transform -translate-y-1/2 rounded" }
+                div { class: "absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-main to-third transform -translate-y-1/2 rounded" }
                 {timeline_data.into_iter().map(|data| {
                     rsx! {
                         TimelineBubble {
@@ -70,6 +69,5 @@ pub fn WhimsicalCVTimeline() -> Element {
                     }
                 })}
             }
-        }
     }
 }

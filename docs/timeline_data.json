@@ -2,8 +2,14 @@
     {
         "year": "2024",
         "title": "NEAR Explorer",
-        "description": "Embarked on a NEAR journey, shaping the DevHub dreams",
+        "description": "Embarked on a NEAR journey, crafting the DevHub dreams",
         "icon": "🚀"
+    },
+    {
+        "year": "2023",
+        "title": "Graduation",
+        "description": "Snagged my degree from KPI, leveling up in binary arts",
+        "icon": "🎓"
     },
     {
         "year": "2023",
@@ -12,22 +18,16 @@
         "icon": "📄✨"
     },
     {
-        "year": "2023",
+        "year": "2022",
         "title": "Crypto Crusader",
         "description": "Fell down the crypto rabbit hole and decided to stay",
         "icon": "⛓️"
     },
     {
-        "year": "2023",
+        "year": "2022",
         "title": "Rusty Pokemon is summoned",
         "description": "Said 'C-ya later' to C++ and embraced the Rust-y side",
         "icon": "🦀"
-    },
-    {
-        "year": "2023",
-        "title": "Graduation",
-        "description": "Snagged my degree from KPI, leveling up in binary arts",
-        "icon": "🎓"
     },
     {
         "year": "2019",

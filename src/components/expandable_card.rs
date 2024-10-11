@@ -34,7 +34,9 @@ pub fn ExpandableCard(props: ExpandableCardProps) -> Element {
         .map(|tag| String::from_str(tag).unwrap())
         .collect();
     tags.sort();
-    let tags = tags.into_iter().map(|tag| rsx!(Tag { text: tag }));
+    let tags = tags.into_iter().map(|tag| rsx!(
+        Tag { text: tag }
+    ));
 
     // Use an effect to reset the scroll when the card is closed
     let id = props.id.clone();
