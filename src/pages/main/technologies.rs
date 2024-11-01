@@ -15,7 +15,7 @@ pub fn Technologies() -> Element {
 
     rsx!(
         div {
-            h1 { class: "font-bold text-xl lg:text-4xl text-center p-2 lg:p-8", "Technologies" }
+            h1 { class: "font-bold md:my-10 my-5 text-xl lg:text-4xl text-center p-2 lg:p-8", "Technologies" }
             div { class: "flex justify-evenly lg:items-center flex-wrap space-x-4",
                 for obj in technologies {
                     RotatableIconCard {
