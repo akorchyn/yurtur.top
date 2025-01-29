@@ -49,7 +49,7 @@ pub fn WhimsicalCVTimeline() -> Element {
         h2 { class: "md:my-10 my-5 font-bold text-main mb-8 text-center lg:text-3xl text-xl",
             "Journey"
         }
-        div { class: "flex justify-center items-center relative flex-wrap z-0 gap-2 ",
+        div { class: "flex justify-center items-center relative  z-0 lg:gap-20 gap-5 flex-wrap ",
             {timeline_data.into_iter().map(|data| {
                 rsx! {
                         TimelineBubble {

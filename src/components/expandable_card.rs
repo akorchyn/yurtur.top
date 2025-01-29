@@ -12,9 +12,12 @@ pub struct ExpandableCardProps {
     type_: String,
     right_top: String,
     header: String,
+    company_image: String,
+    company_url: String,
+    position: String,
     description: String,
-    markdown_details: String,
     tags: String,
+    markdown_details: String,
 }
 
 fn is_card_visible(props: &DomRect, inner_height: f64) -> bool {
@@ -34,9 +37,7 @@ pub fn ExpandableCard(props: ExpandableCardProps) -> Element {
         .map(|tag| String::from_str(tag).unwrap())
         .collect();
     tags.sort();
-    let tags = tags.into_iter().map(|tag| rsx!(
-        Tag { text: tag }
-    ));
+    let tags = tags.into_iter().map(|tag| rsx!(Tag { text: tag }));
 
     // Use an effect to reset the scroll when the card is closed
     let id = props.id.clone();
@@ -83,9 +84,28 @@ pub fn ExpandableCard(props: ExpandableCardProps) -> Element {
         )
     } else {
         rsx!(
+            // Company section with image and position
             div {
-                div { class: "text-slate-500 font-bold py-2", {props.header} }
-                div { class: "text-slate-500 text-sm", {props.description} }
+                class: "flex items-center gap-4 mb-3",
+                a {
+                    href: "{props.company_url}",
+                    target: "_blank",
+                    class: "flex-shrink-0",
+                    img {
+                        src: "{props.company_image}",
+                        alt: "Company logo",
+                        class: "w-12 h-12 object-contain rounded-full"
+                    }
+                }
+                div {
+                    class: "text-slate-700 font-medium",
+                    {props.description.clone()}
+                }
+            }
+            // Tags
+            div {
+                class: "flex flex-wrap gap-1 mt-2 text-[0.5rem]",
+                {tags}
             }
         )
     };
@@ -105,15 +125,30 @@ pub fn ExpandableCard(props: ExpandableCardProps) -> Element {
     rsx!(
         div {
             id: props.id,
-            onclick: move |_| *visible.write() = Some(!visible_value),
-            class: "relative z-10 w-[calc(100%-2rem)] max-w-xl group bg-white p-4 shadow-black/30 rounded border transition-all duration-1000 transform cursor-pointer ease-in-out scale-100 {class}",
-            div { class: "flex items-center justify-between text-xs text-main",
-                div { {props.type_} }
-                time { {props.right_top} }
+            class: "relative z-10 w-[calc(100%-2rem)] max-w-xl group bg-white p-4 shadow-black/30 rounded border transition-all duration-1000 transform ease-in-out scale-100 {class}",
+
+            // Type and date
+            div {
+                class: "flex items-center justify-between text-xs text-main mb-2",
+                div { {props.type_.clone()} }
+                time { {props.right_top.clone()} }
             }
-            {render_part},
-            div { class: "flex flex-wrap justify-start text-xs py-2 gap-y-1", {tags} }
-            div { class: "flex justify-end text-sm text-main group-hover:underline",
+
+            // Header
+            div {
+                class: "font-semibold text-sm mb-3 text-slate-500",
+                {props.header.clone()}
+            }
+
+
+            // Description
+            div {
+                class: "text-slate-600 text-sm mb-3",
+                {render_part}
+            }
+
+            div { class: "flex justify-end text-sm text-main group-hover:underline cursor-pointer",
+                onclick: move |_| *visible.write() = Some(!visible_value),
                 {read_less_or_more}
             }
         }

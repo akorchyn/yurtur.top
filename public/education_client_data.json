@@ -1,5 +1,35 @@
 [
     {
+        "id": "devhub",
+        "position": "NEAR blockchain Rust Tooling Maintainer",
+        "company": "NEAR DevHub",
+        "started_year": 2024,
+        "ended_year": 2024,
+        "timeline": "May 2024 - Present",
+        "is_education": false,
+        "type": "DAO",
+        "description": "Created near-api-rs, a comprehensive Rust API for NEAR Protocol. Maintainer of core NEAR SDK ecosystem including near-workspaces, near-sdk-rs, and near-cli-rs",
+        "url": "/md/devhub.md",
+        "website": "https://devhub.near.page/",
+        "image_url": "https://i.near.social/magic/large/https://near.social/magic/img/account/devhub.near",
+        "tags": "#Rust #NEAR #Blockchain #SDK #CLI #API #OpenSource"
+    },
+    {
+        "id": "race-of-sloths",
+        "position": "Senior Rust Engineer",
+        "company": "Race-of-Sloths",
+        "started_year": 2024,
+        "ended_year": 2024,
+        "timeline": "May 2024 - Present",
+        "is_education": false,
+        "type": "Part-time",
+        "description": "Developed back-end and smart contract side of the race-of-sloths.com. The tool to gamify and improve the open-source experience for the developers.",
+        "url": "/md/race-of-sloths.md",
+        "website": "https://race-of-sloths.com",
+        "image_url": "https://race-of-sloths.com/images/hero-logo.svg",
+        "tags": "#Rust #SmartContracts #Backend #Blockchain #OpenSource #Gamification"
+    },
+    {
         "id": "ndc",
         "position": "Senior Rust Engineer",
         "company": "Near NDC",
@@ -8,8 +38,10 @@
         "timeline": "Feb 2024 - May 2024",
         "is_education": false,
         "type": "DAO",
-        "description": "Decentralized Governance on NEAR. Worked as part of the DAO service team. Developed private stake-weighted voting solution for the upcoming election",
+        "description": "Architected and implemented a private stake-weighted voting solution for DAO elections. Enhanced voting security through integration with Secret Network for confidential ballot handling",
         "url": "/md/ndc.md",
+        "website": "https://github.com/near-ndc",
+        "image_url": "https://avatars.githubusercontent.com/u/115423001?s=200&v=4",
         "tags": "#Rust #Js #NEAR #SecretNetwork #SQL #Blockchain #DAO"
     },
     {
@@ -21,20 +53,24 @@
         "timeline": "Nov 2022 - Mar 2024",
         "is_education": false,
         "type": "Product company",
-        "description": "GGx is a innovative layer-0 blockchain. I was core protocol engineer. Developed the chain from the scratch, worked on eth relayer, iterative merkle proof, pallets",
+        "description": "Core protocol engineer responsible for foundational chain development. Implemented cross-chain communication via ETH relayer, designed iterative merkle proof system, and developed custom substrate pallets",
         "url": "/md/ggx.md",
+        "website": "https://ggxchain.io",
+        "image_url": "https://avatars.githubusercontent.com/u/123019201?s=200&v=4",
         "tags": "#Rust #Js #Nix #Substrate #IBC #Ethereum #MPC #ZKProofs #Blockchain #ProtocolDesign #Solidity"
     },
     {
         "id": "kpi",
-        "position": "National Technical University of Ukraine “Igor Sikorsky Kyiv Polytechnic Institute”",
+        "position": "National Technical University of Ukraine \"Igor Sikorsky Kyiv Polytechnic Institute\"",
         "started_year": 2019,
         "timeline": "2019 - 2023",
         "ended_year": 2023,
         "is_education": true,
         "type": "Bachelor's degree",
         "description": "Bachelor of Software Engineering in one of the most prestigious universities in Ukraine.",
-        "url": "/md/kpi.md"
+        "url": "/md/kpi.md",
+        "website": "https://kpi.ua",
+        "image_url": "https://kpi.ua/files/styles/medium/public/images-page/kpi-big-logo.png?itok=RMYizmRh"
     },
     {
         "id": "tricorn",
@@ -46,8 +82,10 @@
         "timeline": "Jul 2022 - Nov 2022",
         "is_education": false,
         "type": "Contract",
-        "description": "Safe and secure centralized cross-chain bridge for EVM and non-EVM blockchains. Supporting Ethereum, Casper Network, Avalanch and many more",
+        "description": "Developed centralized implementation of the cross-chain bridge. Developed Casper Network smart contracts.",
         "url": "/md/tricorn.md",
+        "website": "https://tricorn.network/",
+        "image_url": "https://pbs.twimg.com/profile_images/1633427495344037888/Je6X_nSN_400x400.png",
         "tags": "#Rust #Interoperability #Solidity #CasperNetwork #Ethereum #Avalanche #SmartContracts #GoLang"
     },
     {
@@ -60,8 +98,10 @@
         "timeline": "Sep 2022 - Oct 2022",
         "is_education": false,
         "type": "Contract",
-        "description": "The Blockchain's first football metaverse game - hold NFT player cards, manage, and play to earn.",
+        "description": "Developed smart contracts for the Casper Network. The Blockchain's first football metaverse game - hold NFT player cards, manage, and play to earn.",
         "url": "/md/ud.md",
+        "website": "https://ultimatedivision.com",
+        "image_url": "https://pbs.twimg.com/profile_images/1833587823972061184/9Kph0nH2_400x400.png",
         "tags": "#Rust #Blockchain #NFT #ERC20 #SmartContracts #Casper"
     },
     {
@@ -74,8 +114,10 @@
         "timeline": "Jan 2021 - Jul 2022",
         "is_education": false,
         "type": "Outsource company EPAM",
-        "description": "Real-time data distribution system for financial markets.",
+        "description": "Maintained Thomson one back-end as part of the Value-Added Services team. Real-time data distribution system for financial markets.",
         "url": "/md/epam.md",
+        "website": "https://www.refinitiv.com",
+        "image_url": "https://scontent-iev1-1.xx.fbcdn.net/v/t39.30808-6/310281287_561147986014355_5351444308952732671_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=4KUmAYQaJUQQ7kNvgGPlhkB&_nc_zt=23&_nc_ht=scontent-iev1-1.xx&_nc_gid=A0r35MaGLajBaUZna118gdu&oh=00_AYA5B8cPIWT3p-sLwovT04l1t2W5iFBVbucWkDOrYM-Y8w&oe=679FEC03",
         "tags": "#CPP #RealTimeData #Jenkins #CI/CD #Support #Automation #SunOS #Optimization"
     },
     {
@@ -88,8 +130,10 @@
         "ended_year": 2021,
         "is_education": false,
         "type": "Outsource company Intellias",
-        "description": "Leader of the map-making industry. Here Technologies is a company that provides mapping and location data and related services to individuals and companies.",
+        "description": "Worked on mobile SDK components for mapping and routing services. Worked on integration of the new map format into routing engine. Leader of the map-making industry.",
         "url": "/md/intellias.md",
+        "website": "https://here.com",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/HERE_logo.svg/90px-HERE_logo.svg.png",
         "tags": "#C++ #Mobile #Android #SDK #ClientSupport #Routing #Optimization"
     },
     {
@@ -101,6 +145,8 @@
         "is_education": true,
         "type": "Programming school",
         "description": "Ecole 42 is a renowned computer programming school originally founded in France. It is known for its innovative and unconventional approach to education in the field of computer science and coding.",
-        "url": "/md/ecole42.md"
+        "url": "/md/ecole42.md",
+        "website": "https://42.fr",
+        "image_url": "https://42.fr/wp-content/uploads/2021/05/42-Final-sigle-seul.svg"
     }
 ]

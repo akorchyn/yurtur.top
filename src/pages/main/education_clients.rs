@@ -4,13 +4,15 @@ use dioxus::prelude::*;
 
 use crate::{base_url, components::expandable_card::ExpandableCard};
 
-#[derive(serde::Deserialize, Debug)]
+#[derive(serde::Deserialize, Debug, Clone)]
 struct Type {
     id: String,
     position: String,
     timeline: String,
     description: String,
     url: String,
+    website: String,
+    image_url: String,
     #[serde(rename = "type")]
     type_: String,
     is_education: bool,
@@ -46,6 +48,10 @@ pub fn EducationClientsTimeline() -> Element {
     let data: Vec<Type> =
         serde_json::from_str(include_str!("../../../public/education_client_data.json")).ok()?;
     let state = use_signal(|| HashMap::<String, Option<String>>::new());
+    web_sys::console::log_1(&web_sys::wasm_bindgen::JsValue::from_str(&format!(
+        "{:?}",
+        data
+    )));
 
     let elements = data.into_iter().map(|element| {
         let suffix = match (element.company, element.via) {
@@ -54,7 +60,7 @@ pub fn EducationClientsTimeline() -> Element {
             (None, Some(via)) => format!("via {}", via),
             _ => "".to_string(),
         };
-        let name = element.position + " " + &suffix;
+        let name = element.position.clone() + " " + &suffix;
 
         let reverse = if element.is_education { "lg:flex-row-reverse"} else { "" };
         let line = if element.is_education { "right-[10%] left-1/2"  } else { "left-[10%] right-1/2"  };
@@ -72,6 +78,9 @@ pub fn EducationClientsTimeline() -> Element {
                         right_top: element.timeline,
                         header: name,
                         description: element.description,
+                        company_image: element.image_url.clone(),
+                        company_url: element.website.clone(),
+                        position: element.position.clone(),
                         markdown_details: state
                             .read()
                             .get(&element.id)
