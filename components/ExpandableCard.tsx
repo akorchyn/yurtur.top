@@ -83,7 +83,7 @@ export default function ExpandableCard({
                 }
             }
         }
-    }, [open, id, isInited]);
+    }, [open, id]);
 
     const scaleClass = open
         ? 'scale-100'

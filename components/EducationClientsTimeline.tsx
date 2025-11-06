@@ -122,7 +122,7 @@ export default function EducationClientsTimeline({ data }: EducationClientsTimel
                 <div>Work Experience</div>
                 <div>Education</div>
             </div>
-            <div className="mt-5 lg:mt-10 space-y-4 relative flex flex-col before:absolute before:inset-0 before:ml-5 before:-translate-x-px lg:before:mx-auto lg:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-main before:to-transparent">
+            <div className="mt-5 lg:mt-10 space-y-4 relative flex flex-col before:absolute before:inset-0 before:ml-5 before:-translate-x-px lg:before:mx-auto lg:before:translate-x-0 before:h-full before:w-0.5 before:bg-linier-to-b before:from-transparent before:via-main before:to-transparent">
                 {elements}
             </div>
         </div>
