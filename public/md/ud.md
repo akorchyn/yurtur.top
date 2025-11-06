@@ -1,5 +1,3 @@
-# Senior Rust Blockchain Developer at Ultimate Division
-
 ## Overview
 
 Engaged in an innovative contract role with Ultimate Division. The blockchain's first football metaverse game - hold NFT player cards, manage, and play to earn.

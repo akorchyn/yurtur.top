@@ -1,5 +1,3 @@
-# Core Protocol Developer at GGx | Layer 0 protocol
-
 ## Overview
 
 At GGx, I hold a key position as a Core Protocol Developer, playing a vital role in advancing the platform's infrastructure. GGx stands at the forefront of the blockchain industry as an Interchain Infrastructure Protocol, integrating cutting-edge technologies such as IBC, Schnorr signatures, ZK Rollups, and Advanced Liquidity Routing to enhance interoperability and scalability.

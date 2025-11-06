@@ -2,6 +2,12 @@
 
 import { useState } from 'react';
 import timelineData from '../public/timeline_data.json';
+import {
+    HoverCard,
+    HoverCardContent,
+    HoverCardTrigger,
+} from '@/components/animate-ui/components/radix/hover-card';
+import { Card } from '@/components/ui/card';
 
 interface TimelineBubbleProps {
     year: string;
@@ -14,41 +20,43 @@ function TimelineBubble({ year, title, description, icon }: TimelineBubbleProps)
     const [isPopped, setIsPopped] = useState(false);
 
     const scaleClass = isPopped ? 'scale-110' : 'scale-100';
-    const bgClass = isPopped ? 'bg-main text-secondary' : 'bg-secondary text-main';
-    const tooltipClass = isPopped ? '' : 'hidden';
+    const bgClass = isPopped ? 'bg-main text-secondary' : 'bg-white text-main';
 
     return (
-        <div
-            className={`cursor-pointer transition-all duration-300 ${scaleClass}`}
-            onMouseEnter={() => setIsPopped(true)}
-            onMouseLeave={() => setIsPopped(false)}
-        >
-            <div className={`relative w-32 h-32 lg:w-48 lg:h-48 rounded-full flex flex-col items-center justify-center ${bgClass} transition-colors duration-300 shadow-lg`}>
-                <div className="text-4xl lg:text-6xl mb-2">{icon}</div>
-                <span className="font-bold text-lg">{year}</span>
-                <div className={`absolute left-1/2 bottom-full transform -translate-x-1/2 -translate-y-2 mt-2 bg-white p-4 rounded-lg shadow-md lg:w-80 w-52 ${tooltipClass} transition-all duration-300`}>
-                    <h3 className="font-bold text-main">{title}</h3>
-                    <p className="mt-2 text-slate-400 text-sm">{description}</p>
+        <HoverCard openDelay={0} closeDelay={100}>
+            <HoverCardTrigger asChild>
+                <button
+                    className={`cursor-pointer transition-all duration-300 ${scaleClass}`}
+                    onMouseEnter={() => setIsPopped(true)}
+                    onMouseLeave={() => setIsPopped(false)}
+                >
+                    <Card className={`w-12 h-12 lg:w-12 lg:h-12 rounded-full flex flex-col items-center justify-center ${bgClass} transition-colors duration-300 shadow-sm border border-main/20`}>
+                        <div className="text-base lg:text-lg">{icon}</div>
+                    </Card>
+                </button>
+            </HoverCardTrigger>
+            <HoverCardContent
+                side="bottom"
+                align="center"
+                sideOffset={8}
+            >
+                <div className="space-y-1">
+                    <div className='flex justify-between text-sm text-main'>
+                        <h3 className="font-bold w-full">{title}</h3>
+                        <span>{year}</span>
+                    </div>
+                    <p className="text-slate-600 text-xs leading-relaxed">{description}</p>
                 </div>
-            </div>
-        </div>
+            </HoverCardContent>
+        </HoverCard>
     );
-}
-
-interface TimelineData {
-    year: string;
-    title: string;
-    description: string;
-    icon: string;
 }
 
 export default function BubbleTimeline() {
     return (
-        <>
-            <h2 className="md:my-10 my-5 font-bold text-main mb-8 text-center lg:text-3xl text-xl">
-                Journey
-            </h2>
-            <div className="flex justify-center items-center relative z-0 lg:gap-20 gap-5 flex-wrap">
+        <div className="flex flex-col items-start lg:items-end gap-2">
+            <h3 className="text-sm font-semibold text-main/70">Journey</h3>
+            <div className="flex gap-2 lg:gap-3">
                 {timelineData.map((data, index) => (
                     <TimelineBubble
                         key={index}
@@ -59,6 +67,6 @@ export default function BubbleTimeline() {
                     />
                 ))}
             </div>
-        </>
+        </div>
     );
 }

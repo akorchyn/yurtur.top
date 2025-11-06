@@ -16,6 +16,7 @@ interface TimelineType {
     company?: string;
     via?: string;
     tags?: string;
+    started_year: number;
     ended_year?: number;
 }
 
@@ -25,6 +26,19 @@ interface EducationClientsTimelineProps {
 
 export default function EducationClientsTimeline({ data }: EducationClientsTimelineProps) {
     const [contentState, setContentState] = useState<Record<string, string | null>>({});
+    const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
+
+    const toggleTag = (tag: string) => {
+        setSelectedTags(prev => {
+            const newSet = new Set(prev);
+            if (newSet.has(tag)) {
+                newSet.delete(tag);
+            } else {
+                newSet.add(tag);
+            }
+            return newSet;
+        });
+    };
 
     const loadContent = async (key: string, url: string) => {
         if (contentState[key] !== undefined) {
@@ -42,7 +56,15 @@ export default function EducationClientsTimeline({ data }: EducationClientsTimel
         }
     };
 
-    const elements = data.map((element) => {
+    const filteredData = selectedTags.size === 0
+        ? data
+        : data.filter(element => {
+            if (!element.tags) return false;
+            const elementTags = element.tags.split(/\s+/).filter(tag => tag);
+            return elementTags.some(tag => selectedTags.has(tag));
+        });
+
+    const elements = filteredData.map((element) => {
         const suffix = (() => {
             if (element.company && element.via) {
                 return `at ${element.company} via ${element.via}`;
@@ -77,11 +99,13 @@ export default function EducationClientsTimeline({ data }: EducationClientsTimel
                         position={element.position}
                         markdownDetails={contentState[element.id] ?? 'Loading'}
                         tags={element.tags ?? ''}
+                        onTagClick={toggleTag}
+                        selectedTags={selectedTags}
                     />
 
                     <div className={`lg:block hidden absolute top-[10%] border-main border-b-4 border-dotted z-0 mx-auto h-0.5 ${line}`}>
                         <p className={`lg:block hidden absolute -top-8 transform bg-main text-white px-2 ${label}`}>
-                            {element.ended_year?.toString() ?? 'Present'}
+                            {element.started_year?.toString() ?? 'Present'}
                         </p>
                     </div>
                 </div>

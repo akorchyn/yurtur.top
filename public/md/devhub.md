@@ -1,5 +1,3 @@
-# NEAR blockchain Rust Tooling Maintainer at NEAR DevHub
-
 ## Role Overview
 Working as a maintainer and creator of essential Rust tooling for the NEAR blockchain ecosystem.
 

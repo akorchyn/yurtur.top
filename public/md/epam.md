@@ -1,5 +1,3 @@
-# Senior C++ Engineer London Stock Exchange Group | Thomson One
-
 ## Overview
 
 As a Senior C++ Engineer for the London Stock Exchange Group, I was instrumental in the maintenance and enhancement of sophisticated applications crucial for the real-time and historical analysis of market data. These applications are responsible for the aggregation and distribution of over 500,000 records per second, sourced globally from various exchanges, to produce high-value analytical insights.

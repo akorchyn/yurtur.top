@@ -5,19 +5,34 @@ import EducationClientsTimelineWrapper from '@/components/EducationClientsTimeli
 export default function Home() {
   return (
     <div className="bg-secondary text-main w-full p-safe-or-4 lg:p-safe-or-16">
-      <div className="flex justify-between items-center">
-        <div>
-          <h1 className="font-extrabold text-2xl lg:text-6xl">
-            Ar
-            <span className="text-third">tur-Yur</span>
-            ii
-          </h1>
-          <h1 className="font-extrabold text-2xl lg:text-6xl">Korchynskyi</h1>
-          <h2 className="text-xl lg:text-5xl">Protocol Engineer</h2>
+      {/* Hero Section */}
+      <div className="mb-8 lg:mb-12">
+        <div className="flex justify-between items-start">
+          <div>
+            <h1 className="font-extrabold text-2xl lg:text-5xl">
+              Ar
+              <span className="text-third">tur-Yur</span>
+              ii
+            </h1>
+            <h1 className="font-extrabold text-2xl lg:text-5xl">Korchynskyi</h1>
+            <h2 className="text-lg lg:text-3xl mt-2">Protocol Engineer</h2>
+          </div>
+          {/* Journey in top right corner */}
+          <div className="hidden lg:block">
+            <BubbleTimeline />
+          </div>
         </div>
+
+        {/* Technologies below Protocol Engineer */}
+        <Technologies />
       </div>
-      <Technologies />
-      <BubbleTimeline />
+
+      {/* Journey for mobile - below technologies */}
+      <div className="lg:hidden mb-8">
+        <BubbleTimeline />
+      </div>
+
+      {/* Experience Timeline */}
       <EducationClientsTimelineWrapper />
     </div>
   );

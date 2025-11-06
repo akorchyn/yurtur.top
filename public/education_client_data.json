@@ -4,11 +4,10 @@
         "position": "NEAR blockchain Rust Tooling Maintainer",
         "company": "NEAR DevHub",
         "started_year": 2024,
-        "ended_year": 2024,
         "timeline": "May 2024 - Present",
         "is_education": false,
         "type": "DAO",
-        "description": "Created near-api-rs, a comprehensive Rust API for NEAR Protocol. Maintainer of core NEAR SDK ecosystem including near-workspaces, near-sdk-rs, and near-cli-rs",
+        "description": "Created near-api-rs, a comprehensive Rust API for NEAR Protocol. Maintainer of core NEAR SDK ecosystem including near-workspaces, near-sdk-rs, and near-cli-rs. Developer of nearn.io",
         "url": "/md/devhub.md",
         "website": "https://devhub.near.page/",
         "image_url": "https://i.near.social/magic/large/https://near.social/magic/img/account/devhub.near",
@@ -27,7 +26,7 @@
         "url": "/md/race-of-sloths.md",
         "website": "https://race-of-sloths.com",
         "image_url": "https://race-of-sloths.com/images/hero-logo.svg",
-        "tags": "#Rust #SmartContracts #Backend #Blockchain #OpenSource #Gamification"
+        "tags": "#Rust #SmartContracts #JS #Backend #Blockchain #OpenSource #Gamification"
     },
     {
         "id": "ndc",
@@ -42,7 +41,7 @@
         "url": "/md/ndc.md",
         "website": "https://github.com/near-ndc",
         "image_url": "https://avatars.githubusercontent.com/u/115423001?s=200&v=4",
-        "tags": "#Rust #Js #NEAR #SecretNetwork #SQL #Blockchain #DAO"
+        "tags": "#Rust #JS #NEAR #SecretNetwork #SQL #Blockchain #DAO"
     },
     {
         "id": "ggx",
@@ -57,20 +56,7 @@
         "url": "/md/ggx.md",
         "website": "https://ggxchain.io",
         "image_url": "https://avatars.githubusercontent.com/u/123019201?s=200&v=4",
-        "tags": "#Rust #Js #Nix #Substrate #IBC #Ethereum #MPC #ZKProofs #Blockchain #ProtocolDesign #Solidity"
-    },
-    {
-        "id": "kpi",
-        "position": "National Technical University of Ukraine \"Igor Sikorsky Kyiv Polytechnic Institute\"",
-        "started_year": 2019,
-        "timeline": "2019 - 2023",
-        "ended_year": 2023,
-        "is_education": true,
-        "type": "Bachelor's degree",
-        "description": "Bachelor of Software Engineering in one of the most prestigious universities in Ukraine.",
-        "url": "/md/kpi.md",
-        "website": "https://kpi.ua",
-        "image_url": "https://kpi.ua/files/styles/medium/public/images-page/kpi-big-logo.png?itok=RMYizmRh"
+        "tags": "#Rust #JS #Nix #Substrate #IBC #Ethereum #MPC #ZKProofs #Blockchain #ProtocolDesign #Solidity"
     },
     {
         "id": "tricorn",
@@ -86,7 +72,7 @@
         "url": "/md/tricorn.md",
         "website": "https://tricorn.network/",
         "image_url": "https://pbs.twimg.com/profile_images/1633427495344037888/Je6X_nSN_400x400.png",
-        "tags": "#Rust #Interoperability #Solidity #CasperNetwork #Ethereum #Avalanche #SmartContracts #GoLang"
+        "tags": "#Rust #Interoperability #ERC20 #Solidity #Solidity #CasperNetwork #Ethereum #Avalanche #SmartContracts #GoLang"
     },
     {
         "id": "ultimate division",
@@ -117,8 +103,21 @@
         "description": "Maintained Thomson one back-end as part of the Value-Added Services team. Real-time data distribution system for financial markets.",
         "url": "/md/epam.md",
         "website": "https://www.refinitiv.com",
-        "image_url": "https://scontent-iev1-1.xx.fbcdn.net/v/t39.30808-6/310281287_561147986014355_5351444308952732671_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=4KUmAYQaJUQQ7kNvgGPlhkB&_nc_zt=23&_nc_ht=scontent-iev1-1.xx&_nc_gid=A0r35MaGLajBaUZna118gdu&oh=00_AYA5B8cPIWT3p-sLwovT04l1t2W5iFBVbucWkDOrYM-Y8w&oe=679FEC03",
-        "tags": "#CPP #RealTimeData #Jenkins #CI/CD #Support #Automation #SunOS #Optimization"
+        "image_url": "https://installt1.lseg.com/download/smartonefulldeploy/install/img/lsegone.svg",
+        "tags": "#C++ #RealTimeData #Jenkins #CI/CD #Support #Automation #SunOS #Optimization"
+    },
+    {
+        "id": "kpi",
+        "position": "National Technical University of Ukraine \"Igor Sikorsky Kyiv Polytechnic Institute\"",
+        "started_year": 2019,
+        "timeline": "2019 - 2023",
+        "ended_year": 2023,
+        "is_education": true,
+        "type": "Bachelor's degree",
+        "description": "Bachelor of Software Engineering in one of the most prestigious universities in Ukraine.",
+        "url": "/md/kpi.md",
+        "website": "https://kpi.ua",
+        "image_url": "https://kpi.ua/files/styles/medium/public/images-page/kpi-big-logo.png?itok=RMYizmRh"
     },
     {
         "id": "intellias",
@@ -134,7 +133,7 @@
         "url": "/md/intellias.md",
         "website": "https://here.com",
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/HERE_logo.svg/90px-HERE_logo.svg.png",
-        "tags": "#C++ #Mobile #Android #SDK #ClientSupport #Routing #Optimization"
+        "tags": "#C++ #Mobile #Android #SDK #Support #Routing #Optimization #Jenkins"
     },
     {
         "id": "ecole42",
@@ -147,6 +146,6 @@
         "description": "Ecole 42 is a renowned computer programming school originally founded in France. It is known for its innovative and unconventional approach to education in the field of computer science and coding.",
         "url": "/md/ecole42.md",
         "website": "https://42.fr",
-        "image_url": "https://42.fr/wp-content/uploads/2021/05/42-Final-sigle-seul.svg"
+        "image_url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFwAAABcCAMAAADUMSJqAAAAYFBMVEX///8AAAD8/Pzs7Oxubm5lZWWYmJgyMjKpqanT09M6OjrMzMyUlJTQ0NDJycmbm5tbW1t1dXVAQEBKSkp7e3sqKiqDg4NRUVFFRUW1tbX19fUICAgQEBCNjY0YGBhWVlbFZNB3AAABiElEQVRoge3Y23KCMBAG4CQcLIpCAMXaWt//LWuHU3ZLYAOk7XT2v9vIfrNmAh6E4HA4HI5Tsig0EwXNcgpX4wuow0pR7FjCHNv1HKwWag8vO1PwFNlJ90JkrtZCIHxHwPHcvQ3wq1iCW+cGeC2W4BO2gZdqCW7fExMvm9oRn5p7wEu1BLedQYhfu9oJn7FbvO4NFzybsRu8GGoHfG7uBi8NgY7P2194YQJknGA/8RLUVJxii3wP24k4yRYX1E17KmL7YHl/MCfUFY9ehc8gzT6grtTj3OM2z73V3D9pj59BbJ9+3V5279DsI+rKNpwb78m4/V/mpp3BZXO/3oKp3FzmVmd41du7nMxL05aj5RtU702tdtOYBY/QcgBs/aG84VX3GeoB19IfXkl/uJb+8Er6w7X0h7e2F7zqSg+47ssOR7f/Cnywe1xHk3mQ8dAoKb+gn0mouDbLdfi3p2IIStIfC1b8DjcvjHNQ61X4NmGcccb/Mo6/cG6KB2lsJk3mWzgcDofDoeYT9IgXTVimnsgAAAAASUVORK5CYII="
     }
 ]

@@ -1,5 +1,3 @@
-# Senior Rust Engineer at [Tricorn](https://tricorn.network/)
-
 ## Overview
 
 Contributed to a pivotal project focused on establishing a safe and secure cross-chain bridge. This bridge serves as a critical infrastructure piece for interoperability, connecting EVM and non-EVM blockchains such as Ethereum, Casper, and Avalanche, among others.

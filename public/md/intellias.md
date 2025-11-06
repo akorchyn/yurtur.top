@@ -1,7 +1,3 @@
-# Junior & Middle C++ Engineer at Here Technologies
-
-## Project 1: Here WeGo Mobile Application SDK
-
 ### Overview
 
 As a Junior C++ Engineer, I was tasked with maintaining and updating the SDK for the legacy mobile SDK for 'Here WeGo' while a new SDK was in development. My role involved ensuring the application's performance and functionality kept pace with modern standards and user expectations.

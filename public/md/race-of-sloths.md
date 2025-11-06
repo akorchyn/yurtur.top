@@ -1,5 +1,3 @@
-# Senior Rust Engineer at Race-of-Sloths
-
 ## Project Overview
 Race-of-Sloths is an innovative platform designed to gamify and enhance the open-source development experience. The project aims to incentivize and improve developer engagement in open-source contributions.
 

@@ -5,6 +5,11 @@
         "description": "GGx, NDC, NEAR-Devhub, Tricorn, Ultimate Division"
     },
     {
+        "title": "TypeScript exp",
+        "src": "/icons/typescript.svg",
+        "description": "NEARN, Race of Sloths"
+    },
+    {
         "title": "C++ Exp",
         "src": "/icons/cplusplus.svg",
         "description": "Here & Refinitiv contractor"
@@ -12,6 +17,6 @@
     {
         "title": "Blockchain exp",
         "src": "/icons/blockchain.svg",
-        "description": "GGx, Substrate, Casper, NEAR, Secret Network"
+        "description": "GGx, Substrate, Casper, NEAR, Secret Network, Ethereum"
     }
 ]
