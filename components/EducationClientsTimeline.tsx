@@ -7,6 +7,7 @@ import DevHub from './DevHub';
 import NDC from './NDC';
 import BoostyProjects from './BoostyProjects';
 import GGx from './GGx';
+import Intellias from './Intellias';
 
 export interface TimelineType {
     id: string;
@@ -43,7 +44,7 @@ const customDetailRenderers: Record<string, CustomDetailRenderer> = {
     'devhub': (element: TimelineType, defaultProps: {
         onTagClick: (tag: string) => void;
         selectedTags: Set<string>;
-    }) => <DevHub element={element} {...defaultProps} />,
+    }) => <DevHub />,
     'ndc': (element: TimelineType, defaultProps: {
         onTagClick: (tag: string) => void;
         selectedTags: Set<string>;
@@ -56,6 +57,10 @@ const customDetailRenderers: Record<string, CustomDetailRenderer> = {
         onTagClick: (tag: string) => void;
         selectedTags: Set<string>;
     }) => <GGx />,
+    'intellias': (element: TimelineType, defaultProps: {
+        onTagClick: (tag: string) => void;
+        selectedTags: Set<string>;
+    }) => <Intellias />,
 };
 
 interface EducationClientsTimelineProps {
@@ -131,7 +136,7 @@ export default function EducationClientsTimeline({ data, }: EducationClientsTime
     };
 
     return (
-        <div className="mb-32 mt-5 m-5 lg:m-10 lg:mt-32 lg:mb-32">
+        <div className="mb-32 mt-5  lg:mt-32 lg:mb-32">
             <Tabs defaultValue="career">
                 <TabsList className='bg-primary'>
                     <TabsTrigger value="career" className='text-white'>Career</TabsTrigger>
