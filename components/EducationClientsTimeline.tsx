@@ -2,8 +2,13 @@
 
 import { useState } from 'react';
 import ExpandableCard from './ExpandableCard';
+import { Tabs, TabsContent, TabsContents, TabsList, TabsTrigger } from './animate-ui/components/radix/tabs';
+import DevHub from './DevHub';
+import NDC from './NDC';
+import BoostyProjects from './BoostyProjects';
+import GGx from './GGx';
 
-interface TimelineType {
+export interface TimelineType {
     id: string;
     position: string;
     timeline: string;
@@ -20,12 +25,44 @@ interface TimelineType {
     ended_year?: number;
 }
 
+export interface CardProps {
+    element: TimelineType,
+    onTagClick: (tag: string) => void;
+    selectedTags: Set<string>;
+}
+
+type CustomDetailRenderer = (
+    element: TimelineType,
+    defaultProps: {
+        onTagClick: (tag: string) => void;
+        selectedTags: Set<string>;
+    }
+) => React.ReactNode;
+
+const customDetailRenderers: Record<string, CustomDetailRenderer> = {
+    'devhub': (element: TimelineType, defaultProps: {
+        onTagClick: (tag: string) => void;
+        selectedTags: Set<string>;
+    }) => <DevHub element={element} {...defaultProps} />,
+    'ndc': (element: TimelineType, defaultProps: {
+        onTagClick: (tag: string) => void;
+        selectedTags: Set<string>;
+    }) => <NDC />,
+    'boosty': (element: TimelineType, defaultProps: {
+        onTagClick: (tag: string) => void;
+        selectedTags: Set<string>;
+    }) => <BoostyProjects />,
+    'ggx': (element: TimelineType, defaultProps: {
+        onTagClick: (tag: string) => void;
+        selectedTags: Set<string>;
+    }) => <GGx />,
+};
+
 interface EducationClientsTimelineProps {
     data: TimelineType[];
 }
 
-export default function EducationClientsTimeline({ data }: EducationClientsTimelineProps) {
-    const [contentState, setContentState] = useState<Record<string, string | null>>({});
+export default function EducationClientsTimeline({ data, }: EducationClientsTimelineProps) {
     const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
 
     const toggleTag = (tag: string) => {
@@ -40,22 +77,6 @@ export default function EducationClientsTimeline({ data }: EducationClientsTimel
         });
     };
 
-    const loadContent = async (key: string, url: string) => {
-        if (contentState[key] !== undefined) {
-            return;
-        }
-
-        setContentState(prev => ({ ...prev, [key]: null }));
-
-        try {
-            const response = await fetch(url);
-            const content = await response.text();
-            setContentState(prev => ({ ...prev, [key]: content }));
-        } catch (err) {
-            setContentState(prev => ({ ...prev, [key]: `Error: ${err}` }));
-        }
-    };
-
     const filteredData = selectedTags.size === 0
         ? data
         : data.filter(element => {
@@ -64,7 +85,10 @@ export default function EducationClientsTimeline({ data }: EducationClientsTimel
             return elementTags.some(tag => selectedTags.has(tag));
         });
 
-    const elements = filteredData.map((element) => {
+    const careerData = filteredData.filter(item => !item.is_education);
+    const educationData = filteredData.filter(item => item.is_education);
+
+    const renderTimelineItem = (element: TimelineType) => {
         const suffix = (() => {
             if (element.company && element.via) {
                 return `at ${element.company} via ${element.via}`;
@@ -77,54 +101,51 @@ export default function EducationClientsTimeline({ data }: EducationClientsTimel
         })();
 
         const name = `${element.position} ${suffix}`;
-        const reverse = element.is_education ? 'lg:flex-row-reverse' : '';
-        const line = element.is_education ? 'right-[10%] left-1/2' : 'left-[10%] right-1/2';
-        const label = element.is_education ? 'left-5' : 'right-5';
+
+        // Check if there's a custom detail renderer for this ID
+        const customDetailContent = customDetailRenderers && customDetailRenderers[element.id]
+            ? customDetailRenderers[element.id](element, {
+                onTagClick: toggleTag,
+                selectedTags: selectedTags,
+            })
+            : undefined;
 
         return (
-            <div
+            <ExpandableCard
                 key={element.id}
-                className={`relative flex ${reverse}`}
-                onMouseEnter={() => loadContent(element.id, element.url)}
-            >
-                <div>
-                    <ExpandableCard
-                        id={element.id}
-                        type_={element.type}
-                        rightTop={element.timeline}
-                        header={name}
-                        description={element.description}
-                        companyImage={element.image_url}
-                        companyUrl={element.website}
-                        position={element.position}
-                        markdownDetails={contentState[element.id] ?? 'Loading'}
-                        tags={element.tags ?? ''}
-                        onTagClick={toggleTag}
-                        selectedTags={selectedTags}
-                    />
-
-                    <div className={`lg:block hidden absolute top-[10%] border-main border-b-4 border-dotted z-0 mx-auto h-0.5 ${line}`}>
-                        <p className={`lg:block hidden absolute -top-8 transform bg-main text-white px-2 ${label}`}>
-                            {element.started_year?.toString() ?? 'Present'}
-                        </p>
-                    </div>
-                </div>
-            </div>
+                id={element.id}
+                type_={element.type}
+                rightTop={element.timeline}
+                header={name}
+                description={element.description}
+                companyImage={element.image_url}
+                companyUrl={element.website}
+                position={element.position}
+                tags={element.tags ?? ''}
+                url={element.url}
+                onTagClick={toggleTag}
+                selectedTags={selectedTags}
+                customDetailContent={customDetailContent}
+            />
         );
-    });
+    };
 
     return (
         <div className="mb-32 mt-5 m-5 lg:m-10 lg:mt-32 lg:mb-32">
-            <h1 className="lg:text-3xl text-xl font-bold text-center text-main">
-                Experience timeline
-            </h1>
-            <div className="text-2xl font-semibold text-main justify-around hidden lg:flex">
-                <div>Work Experience</div>
-                <div>Education</div>
-            </div>
-            <div className="mt-5 lg:mt-10 space-y-4 relative flex flex-col before:absolute before:inset-0 before:ml-5 before:-translate-x-px lg:before:mx-auto lg:before:translate-x-0 before:h-full before:w-0.5 before:bg-linier-to-b before:from-transparent before:via-main before:to-transparent">
-                {elements}
-            </div>
+            <Tabs defaultValue="career">
+                <TabsList className='bg-primary'>
+                    <TabsTrigger value="career" className='text-white'>Career</TabsTrigger>
+                    <TabsTrigger value="education" className='text-white'>Education</TabsTrigger>
+                </TabsList>
+                <TabsContents>
+                    <TabsContent value="career" className='grid grid-cols-1 gap-y-5 md:grid-cols-2 '>
+                        {careerData.map(renderTimelineItem)}
+                    </TabsContent>
+                    <TabsContent value="education" className='grid grid-cols-1 gap-y-5 md:grid-cols-2'>
+                        {educationData.map(renderTimelineItem)}
+                    </TabsContent>
+                </TabsContents>
+            </Tabs>
         </div>
     );
 }

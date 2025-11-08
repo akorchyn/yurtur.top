@@ -35,7 +35,7 @@ export function TechnologyIcon({ title, src, description }: TechnologyIconProps)
                             alt={title}
                             className="w-8 h-8 md:w-12 md:h-12 object-contain rounded-xl"
                         />
-                        <h3 className="font-bold text-base md:text-lg text-main">
+                        <h3 className="font-bold text-base md:text-lg text-primary">
                             {title}
                         </h3>
                     </div>

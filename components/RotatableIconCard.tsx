@@ -30,7 +30,7 @@ export default function RotatableIconCard({ tooltip, src, sizeClass, description
                     sideOffset={10}
                 >
                     <div className="space-y-2">
-                        <h3 className="font-bold text-lg text-main">
+                        <h3 className="font-bold text-lg text-primary">
                             {tooltip}
                         </h3>
                         <p className="text-sm text-slate-600">

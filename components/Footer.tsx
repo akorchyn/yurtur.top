@@ -2,7 +2,7 @@ import { FaTelegram, FaGithub, FaLinkedin, FaInstagram, FaTwitter, FaYoutube } f
 
 export default function Footer() {
     return (
-        <footer className="fixed bottom-0 w-full bg-main p-safe-or-2 z-50">
+        <footer className="fixed bottom-0 w-full bg-primary p-safe-or-2 z-50">
             <div className="flex space-x-4 p-2 w-full justify-center items-center">
                 <a
                     href="https://www.t.me/akorchynskyi"

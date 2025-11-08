@@ -15,8 +15,8 @@ export default function Tag({ text, onClick, isSelected }: TagProps) {
     const baseClasses = "text-xs font-semibold mr-2 transition-all";
     const interactiveClasses = onClick ? "cursor-pointer" : "";
     const selectedClasses = isSelected
-        ? "bg-main text-white hover:bg-main/90"
-        : "text-main bg-main/10 hover:bg-main/20";
+        ? "bg-primary text-white hover:bg-primary/90"
+        : "text-primary bg-primary/10 hover:bg-primary/20";
 
     return (
         <Badge

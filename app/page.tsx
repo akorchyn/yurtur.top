@@ -4,14 +4,14 @@ import EducationClientsTimelineWrapper from '@/components/EducationClientsTimeli
 
 export default function Home() {
   return (
-    <div className="bg-secondary text-main w-full p-safe-or-4 lg:p-safe-or-16">
+    <div className="bg-secondary text-primary w-full p-safe-or-4 lg:p-safe-or-16">
       {/* Hero Section */}
       <div className="mb-8 lg:mb-12">
         <div className="flex justify-between items-start">
           <div>
             <h1 className="font-extrabold text-2xl lg:text-5xl">
               Ar
-              <span className="text-third">tur-Yur</span>
+              <span className="text-accent">tur-Yur</span>
               ii
             </h1>
             <h1 className="font-extrabold text-2xl lg:text-5xl">Korchynskyi</h1>

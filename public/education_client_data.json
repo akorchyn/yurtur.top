@@ -1,32 +1,17 @@
 [
     {
         "id": "devhub",
-        "position": "NEAR blockchain Rust Tooling Maintainer",
+        "position": "Core Developer",
         "company": "NEAR DevHub",
         "started_year": 2024,
         "timeline": "May 2024 - Present",
         "is_education": false,
-        "type": "DAO",
-        "description": "Created near-api-rs, a comprehensive Rust API for NEAR Protocol. Maintainer of core NEAR SDK ecosystem including near-workspaces, near-sdk-rs, and near-cli-rs. Developer of nearn.io",
+        "type": "Product",
+        "description": "Created near-api-rs - Rust library for NEAR RPC with multiple signing methods and hardware wallet support. Core developer of NEARN - gig marketplace that became main tool for NEAR hackathons and grants. Backend/smart contracts for Race-of-Sloths - gamified open-source contributions platform",
         "url": "/md/devhub.md",
         "website": "https://devhub.near.page/",
         "image_url": "https://i.near.social/magic/large/https://near.social/magic/img/account/devhub.near",
-        "tags": "#Rust #NEAR #Blockchain #SDK #CLI #API #OpenSource"
-    },
-    {
-        "id": "race-of-sloths",
-        "position": "Senior Rust Engineer",
-        "company": "Race-of-Sloths",
-        "started_year": 2024,
-        "ended_year": 2024,
-        "timeline": "May 2024 - Present",
-        "is_education": false,
-        "type": "Part-time",
-        "description": "Developed back-end and smart contract side of the race-of-sloths.com. The tool to gamify and improve the open-source experience for the developers.",
-        "url": "/md/race-of-sloths.md",
-        "website": "https://race-of-sloths.com",
-        "image_url": "https://race-of-sloths.com/images/hero-logo.svg",
-        "tags": "#Rust #SmartContracts #JS #Backend #Blockchain #OpenSource #Gamification"
+        "tags": "#Rust #NEAR #TypeScript #NextJS #Tokio #SmartContracts #Prometheus #Grafana #Cryptography"
     },
     {
         "id": "ndc",
@@ -59,36 +44,20 @@
         "tags": "#Rust #JS #Nix #Substrate #IBC #Ethereum #MPC #ZKProofs #Blockchain #ProtocolDesign #Solidity"
     },
     {
-        "id": "tricorn",
+        "id": "boosty",
         "position": "Senior Rust Developer",
-        "company": "Tricorn",
+        "company": "Casper Network Projects",
         "via": "BoostyLabs",
         "started_year": 2022,
         "ended_year": 2022,
         "timeline": "Jul 2022 - Nov 2022",
         "is_education": false,
         "type": "Contract",
-        "description": "Developed centralized implementation of the cross-chain bridge. Developed Casper Network smart contracts.",
-        "url": "/md/tricorn.md",
-        "website": "https://tricorn.network/",
+        "description": "Developed cross-chain bridge connecting EVM/non-EVM chains (Tricorn). Built NFT/token contracts for football metaverse game (Ultimate Division). Smart contracts audited by Hallborn and Casper Network.",
+        "url": "/md/casper.md",
+        "website": "https://casper.network/",
         "image_url": "https://pbs.twimg.com/profile_images/1633427495344037888/Je6X_nSN_400x400.png",
-        "tags": "#Rust #Interoperability #ERC20 #Solidity #Solidity #CasperNetwork #Ethereum #Avalanche #SmartContracts #GoLang"
-    },
-    {
-        "id": "ultimate division",
-        "position": "Senior Rust Developer",
-        "company": "Ultimate Division",
-        "via": "BoostyLabs",
-        "started_year": 2022,
-        "ended_year": 2022,
-        "timeline": "Sep 2022 - Oct 2022",
-        "is_education": false,
-        "type": "Contract",
-        "description": "Developed smart contracts for the Casper Network. The Blockchain's first football metaverse game - hold NFT player cards, manage, and play to earn.",
-        "url": "/md/ud.md",
-        "website": "https://ultimatedivision.com",
-        "image_url": "https://pbs.twimg.com/profile_images/1833587823972061184/9Kph0nH2_400x400.png",
-        "tags": "#Rust #Blockchain #NFT #ERC20 #SmartContracts #Casper"
+        "tags": "#Rust #CasperNetwork #SmartContracts #NFT #CrossChain #ERC20 #Solidity"
     },
     {
         "id": "epam",

@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import Tag from './Tag';
 import 'highlight.js/styles/github-dark.css';
+import { cn } from '@/lib/utils';
 
 interface ExpandableCardProps {
     id: string;
@@ -19,10 +20,11 @@ interface ExpandableCardProps {
     companyUrl: string;
     position: string;
     description: string;
+    url: string,
     tags: string;
-    markdownDetails: string;
     onTagClick?: (tag: string) => void;
     selectedTags?: Set<string>;
+    customDetailContent?: React.ReactNode;
 }
 
 function isCardVisible(rect: DOMRect, innerHeight: number): boolean {
@@ -38,15 +40,29 @@ export default function ExpandableCard({
     header,
     companyImage,
     companyUrl,
-    position,
     description,
+    url,
     tags: tagsString,
-    markdownDetails,
     onTagClick,
     selectedTags,
+    customDetailContent,
 }: ExpandableCardProps) {
     const [open, setOpen] = useState(false);
-    const [isInited, setIsInited] = useState(false);
+    const [markdownDetails, setMarkdownDetails] = useState<string | null>(null);
+
+    const loadContent = async () => {
+        const response = await fetch(url);
+        const content = await response.text();
+
+        setMarkdownDetails(content);
+    };
+
+    useEffect(() => {
+        // Only load markdown content if there's no custom detail content
+        if (!customDetailContent) {
+            loadContent()
+        }
+    }, [customDetailContent])
 
     const tags = tagsString
         .split(/\s+/)
@@ -61,43 +77,15 @@ export default function ExpandableCard({
             />
         ));
 
-    useEffect(() => {
-        if (!isInited) {
-            setIsInited(true);
-            return;
-        }
-
-        if (!open) {
-            const element = document.getElementById(id);
-            if (element && window) {
-                const rect = element.getBoundingClientRect();
-                const innerHeight = window.innerHeight;
-
-                if (!isCardVisible(rect, innerHeight)) {
-                    const scrollY = window.scrollY;
-                    const y = rect.top + scrollY - 100;
-                    window.scrollTo({
-                        top: y,
-                        behavior: 'smooth',
-                    });
-                }
-            }
-        }
-    }, [open, id]);
-
-    const scaleClass = open
-        ? 'scale-100'
-        : 'scale-90 hover:shadow-lg';
-
     return (
         <Collapsible open={open} onOpenChange={setOpen}>
             <CollapsibleTrigger asChild>
                 <Card
                     id={id}
-                    className={`relative z-10 w-[calc(100%-2rem)] max-w-xl group transition-all duration-1000 transform ease-in-out cursor-pointer ${scaleClass}`}
+                    className={`relative z-10 w-[calc(100%-2rem)] max-w-xl group transition-all duration-1000 transform ease-in-out cursor-pointer`}
                 >
                     <CardHeader>
-                        <div className="flex items-center justify-between text-xs text-main mb-2">
+                        <div className="flex items-center justify-between text-xs text-primary mb-2">
                             <div>{type_}</div>
                             <span>{rightTop}</span>
                         </div>
@@ -133,25 +121,33 @@ export default function ExpandableCard({
                             </>
                         )}
 
-                        <CollapsibleContent>
-                            <div
-                                className="prose prose-sm prose-slate prose-a:text-main prose-headings:text-sm prose-headings:font-bold prose-headings:text-slate-500 prose-code:text-xs prose-pre:text-xs py-2"
-                                onClick={(e) => e.stopPropagation()}
-                            >
-                                <ReactMarkdown
-                                    remarkPlugins={[remarkGfm]}
-                                    rehypePlugins={[rehypeHighlight]}
+                        <CollapsibleContent
+                            className={cn("text-popover-foreground outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2")}
+                        >
+                            {customDetailContent ? (
+                                <div className="py-2" onClick={(e) => e.stopPropagation()}>
+                                    {customDetailContent}
+                                </div>
+                            ) : (
+                                <div
+                                    className="prose prose-sm prose-slate prose-a:text-primary prose-headings:text-sm prose-headings:font-bold prose-headings:text-slate-500 prose-code:text-xs prose-pre:text-xs py-2"
+                                    onClick={(e) => e.stopPropagation()}
                                 >
-                                    {markdownDetails}
-                                </ReactMarkdown>
-                            </div>
+                                    <ReactMarkdown
+                                        remarkPlugins={[remarkGfm]}
+                                        rehypePlugins={[rehypeHighlight]}
+                                    >
+                                        {markdownDetails}
+                                    </ReactMarkdown>
+                                </div>
+                            )}
                         </CollapsibleContent>
                     </CardContent>
 
                     <CardFooter className="flex justify-end pt-0">
                         <Button
                             variant="link"
-                            className="text-main hover:underline p-0 h-auto"
+                            className="text-primary hover:underline p-0 h-auto"
                         >
                             {open ? 'Read less' : 'Read more'}
                         </Button>

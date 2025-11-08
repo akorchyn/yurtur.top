@@ -1,13 +1,20 @@
 ## Role Overview
 Working as a maintainer and creator of essential Rust tooling for the NEAR blockchain ecosystem.
 
-## Key Responsibilities
-- Creator of near-api-rs, a Rust client library for interacting with NEAR Protocol
-- Maintainer of core NEAR SDK crates:
-  - near-sdk-rs: The official Rust SDK for NEAR smart contract development
-  - near-workspaces: Testing framework for NEAR smart contracts
-  - near-cli-rs: Command-line interface tools for NEAR Protocol
-  - ...
+## near-api-rs
+Created and maintain near-api-rs, the Rust client library for NEAR Protocol:
+- Builder pattern for intuitive API design
+- Multiple signing methods (secret key, seed phrase, Ledger hardware wallet)
+- Account key pool to prevent nonce race conditions
+- Full async support with Tokio
+- Comprehensive RPC method coverage
+- Published on crates.io with active maintenance
+
+## Other Responsibilities
+Maintainer of core NEAR SDK crates:
+- near-sdk-rs: The official Rust SDK for NEAR smart contract development
+- near-workspaces: Testing framework for NEAR smart contracts
+- near-cli-rs: Command-line interface tools for NEAR Protocol
 
 ## Technical Focus
 - Developing and maintaining Rust-based developer tools
