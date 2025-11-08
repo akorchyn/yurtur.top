@@ -29,10 +29,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="h-dvh bg-secondary">
+        <div className="h-dvh bg-secondary relative">
           <Header />
-          {children}
-          <Footer />
+          <div className="h-full overflow-auto pt-[72px]">
+            {children}
+            <Footer />
+          </div>
         </div>
       </body>
     </html>

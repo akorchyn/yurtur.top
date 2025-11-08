@@ -162,4 +162,68 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Custom Scrollbar Styles */
+  /* For Webkit browsers (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted/20;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/40;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/60;
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    @apply bg-muted-foreground/80;
+  }
+
+  /* For Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--muted-foreground) var(--muted);
+  }
+
+  /* Optional: Hide scrollbar until hover (uncomment if desired) */
+  /*
+  .overflow-auto:not(:hover)::-webkit-scrollbar-thumb {
+    @apply bg-transparent;
+  }
+
+  .overflow-auto:hover::-webkit-scrollbar-thumb {
+    @apply bg-primary/30;
+  }
+  */
+
+  /* Dark mode adjustments */
+  .dark ::-webkit-scrollbar-track {
+    @apply bg-muted/10;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30;
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+
+  .dark ::-webkit-scrollbar-thumb:active {
+    @apply bg-muted-foreground/70;
+  }
+
+  .dark * {
+    scrollbar-color: var(--muted-foreground) var(--muted);
+  }
 }
