@@ -111,7 +111,7 @@ export default function ExpandableCard({
                                             className="w-12 h-12 object-contain rounded-full"
                                         />
                                     </a>
-                                    <div className="text-slate-700 font-medium">
+                                    <div className="text-slate-700">
                                         {description}
                                     </div>
                                 </div>

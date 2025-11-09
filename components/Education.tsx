@@ -14,7 +14,7 @@ export default function Education() {
                                 <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700" />
                             </div>
                             <div className="flex-1">
-                                <h3 className="font-bold text-base sm:text-lg text-gray-800">
+                                <h3 className="font-bold text-sm sm:text-lg text-gray-800">
                                     Bachelor of Software Engineering
                                     <span className="font-normal text-xs text-gray-500 ml-2">2019-2023</span>
                                 </h3>
@@ -74,7 +74,7 @@ export default function Education() {
                                 />
                             </div>
                             <div className="flex-1">
-                                <h3 className="font-bold text-base sm:text-lg text-gray-800">
+                                <h3 className="font-bold text-sm sm:text-lg text-gray-800">
                                     École 42 Program
                                     <span className="font-normal text-xs text-gray-500 ml-2">2018-2020</span>
                                 </h3>
