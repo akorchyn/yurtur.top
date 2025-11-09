@@ -11,7 +11,7 @@
         "url": "/md/devhub.md",
         "website": "https://devhub.near.page/",
         "image_url": "https://i.near.social/magic/large/https://near.social/magic/img/account/devhub.near",
-        "tags": "#Rust #NEAR #TypeScript #NextJS #Tokio #SmartContracts #Prometheus #Grafana #Cryptography"
+        "tags": "#Rust #NEAR #TypeScript #NextJS #Tokio #SmartContracts #Prometheus #Grafana #JSONRPC #n8n #GitHubAPI"
     },
     {
         "id": "ndc",
@@ -26,7 +26,7 @@
         "url": "/md/ndc.md",
         "website": "https://github.com/near-ndc",
         "image_url": "https://avatars.githubusercontent.com/u/115423001?s=200&v=4",
-        "tags": "#Rust #JS #NEAR #SecretNetwork #SQL #Blockchain #DAO"
+        "tags": "#Rust #NEAR #SecretNetwork #CosmWasm #Plonky2 #Gnark #Groth16 #Go #ZKProofs #DAO"
     },
     {
         "id": "ggx",
@@ -41,7 +41,7 @@
         "url": "/md/ggx.md",
         "website": "https://ggxchain.io",
         "image_url": "https://avatars.githubusercontent.com/u/123019201?s=200&v=4",
-        "tags": "#Rust #JS #Nix #Substrate #IBC #Ethereum #MPC #ZKProofs #Blockchain #ProtocolDesign #Solidity"
+        "tags": "#Rust #Substrate #IBC #Ethereum #ZKSNARKs #Nix #MerkleProofs #Blockchain #ProtocolDesign"
     },
     {
         "id": "boosty",
@@ -57,7 +57,7 @@
         "url": "/md/casper.md",
         "website": "https://casper.network/",
         "image_url": "https://pbs.twimg.com/profile_images/1633427495344037888/Je6X_nSN_400x400.png",
-        "tags": "#Rust #CasperNetwork #SmartContracts #NFT #CrossChain #ERC20 #Solidity"
+        "tags": "#Rust #CasperNetwork #SmartContracts #NFT #CrossChain #ERC20 #Solidity #Ethereum #Avalanche"
     },
     {
         "id": "epam",
@@ -102,7 +102,7 @@
         "url": "/md/intellias.md",
         "website": "https://here.com",
         "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/HERE_logo.svg/90px-HERE_logo.svg.png",
-        "tags": "#C++ #Mobile #Android #SDK #Support #Routing #Optimization #Jenkins"
+        "tags": "#C++ #Mobile #Android #SDK #Navigation #Routing #Algorithms #Performance #Optimization #Jenkins"
     },
     {
         "id": "ecole42",
