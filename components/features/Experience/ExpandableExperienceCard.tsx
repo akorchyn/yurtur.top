@@ -86,8 +86,8 @@ export default function ExpandableCard({
                 >
                     <CardHeader>
                         <div className="flex items-center justify-between text-xs text-primary mb-2">
-                            <div>{type_}</div>
-                            <span>{rightTop}</span>
+                            <div className='font-bold'>{type_}</div>
+                            <span className='font-bold'>{rightTop}</span>
                         </div>
                         <CardTitle className="text-sm text-slate-500">
                             {header}
