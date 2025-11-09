@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Masonry from 'react-masonry-css';
 import ExpandableCard from './ExpandableExperienceCard';
 import { Tabs, TabsContent, TabsContents, TabsList, TabsTrigger } from '../../animate-ui/components/radix/tabs';
 import DevHub from './Custom/DevHub';
@@ -135,6 +136,12 @@ export default function EducationClientsTimeline({ data, }: EducationClientsTime
         );
     };
 
+    const breakpointColumns = {
+        default: 3,
+        1100: 2,
+        768: 1
+    };
+
     return (
         <div className="mb-32 mt-5  lg:mt-32 lg:mb-32">
             <Tabs defaultValue="career">
@@ -143,11 +150,23 @@ export default function EducationClientsTimeline({ data, }: EducationClientsTime
                     <TabsTrigger value="education" className='text-white'>Education</TabsTrigger>
                 </TabsList>
                 <TabsContents>
-                    <TabsContent value="career" className='grid grid-cols-1 gap-y-5 md:grid-cols-2 '>
-                        {careerData.map(renderTimelineItem)}
+                    <TabsContent value="career">
+                        <Masonry
+                            breakpointCols={breakpointColumns}
+                            className="my-masonry-grid"
+                            columnClassName="my-masonry-grid_column"
+                        >
+                            {careerData.map(renderTimelineItem)}
+                        </Masonry>
                     </TabsContent>
-                    <TabsContent value="education" className='grid grid-cols-1 gap-y-5 md:grid-cols-2'>
-                        {educationData.map(renderTimelineItem)}
+                    <TabsContent value="education">
+                        <Masonry
+                            breakpointCols={breakpointColumns}
+                            className="my-masonry-grid"
+                            columnClassName="my-masonry-grid_column"
+                        >
+                            {educationData.map(renderTimelineItem)}
+                        </Masonry>
                     </TabsContent>
                 </TabsContents>
             </Tabs>

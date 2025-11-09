@@ -82,7 +82,7 @@ export default function ExpandableCard({
             <CollapsibleTrigger asChild>
                 <Card
                     id={id}
-                    className={`relative z-10 w-[calc(100%-2rem)] max-w-xl group transition-all duration-1000 transform ease-in-out cursor-pointer`}
+                    className={`relative z-10 w-[calc(100%-2rem)] group transition-all duration-1000 transform ease-in-out cursor-pointer`}
                 >
                     <CardHeader>
                         <div className="flex items-center justify-between text-xs text-primary mb-2">
