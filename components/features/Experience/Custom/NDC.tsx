@@ -131,7 +131,7 @@ export default function NDC() {
 
                         {/* Status Card */}
                         <div className="bg-gray-50 rounded-lg p-3 border border-gray-300">
-                            <div className="text-sm">D
+                            <div className="text-sm">
                                 <p className="text-gray-700 font-medium">Research Status</p>
                                 <p className="text-gray-600 text-xs mt-1">
                                     POC completed. NDC was sunset June 2024.
