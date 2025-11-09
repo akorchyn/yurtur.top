@@ -9,6 +9,7 @@ import NDC from './Custom/NDC';
 import BoostyProjects from './Custom/BoostyProjects';
 import GGx from './Custom/GGx';
 import Intellias from './Custom/Intellias';
+import Education from '../../Education';
 
 export interface TimelineType {
     id: string;
@@ -160,13 +161,7 @@ export default function EducationClientsTimeline({ data, }: EducationClientsTime
                         </Masonry>
                     </TabsContent>
                     <TabsContent value="education">
-                        <Masonry
-                            breakpointCols={breakpointColumns}
-                            className="my-masonry-grid"
-                            columnClassName="my-masonry-grid_column"
-                        >
-                            {educationData.map(renderTimelineItem)}
-                        </Masonry>
+                        <Education />
                     </TabsContent>
                 </TabsContents>
             </Tabs>
