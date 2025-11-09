@@ -1,5 +1,6 @@
 import Technologies from '@/components/Technologies';
 import BubbleTimeline from '@/components/BubbleTimeline';
+import Languages from '@/components/Languages';
 import EducationClientsTimelineWrapper from '@/components/features/Experience/EducationClientsTimelineWrapper';
 
 export default function Home() {
@@ -17,9 +18,10 @@ export default function Home() {
             <h1 className="font-extrabold text-2xl lg:text-5xl">Korchynskyi</h1>
             <h2 className="text-lg lg:text-3xl mt-2">Protocol Engineer</h2>
           </div>
-          {/* Journey in top right corner */}
-          <div className="hidden lg:block">
+          {/* Journey and Languages in top right corner */}
+          <div className="hidden lg:flex flex-col gap-4">
             <BubbleTimeline />
+            <Languages />
           </div>
         </div>
 
@@ -27,9 +29,10 @@ export default function Home() {
         <Technologies />
       </div>
 
-      {/* Journey for mobile - below technologies */}
-      <div className="lg:hidden mb-8">
+      {/* Journey and Languages for mobile - below technologies */}
+      <div className="lg:hidden mb-8 space-y-4">
         <BubbleTimeline />
+        <Languages />
       </div>
 
       {/* Experience Timeline */}
