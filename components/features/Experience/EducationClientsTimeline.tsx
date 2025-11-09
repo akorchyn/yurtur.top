@@ -1,13 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import ExpandableCard from './ExpandableCard';
-import { Tabs, TabsContent, TabsContents, TabsList, TabsTrigger } from './animate-ui/components/radix/tabs';
-import DevHub from './DevHub';
-import NDC from './NDC';
-import BoostyProjects from './BoostyProjects';
-import GGx from './GGx';
-import Intellias from './Intellias';
+import ExpandableCard from './ExpandableExperienceCard';
+import { Tabs, TabsContent, TabsContents, TabsList, TabsTrigger } from '../../animate-ui/components/radix/tabs';
+import DevHub from './Custom/DevHub';
+import NDC from './Custom/NDC';
+import BoostyProjects from './Custom/BoostyProjects';
+import GGx from './Custom/GGx';
+import Intellias from './Custom/Intellias';
 
 export interface TimelineType {
     id: string;

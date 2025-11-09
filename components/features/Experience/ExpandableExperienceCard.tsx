@@ -7,7 +7,7 @@ import rehypeHighlight from 'rehype-highlight';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
-import Tag from './Tag';
+import Tag from '../../Tag';
 import 'highlight.js/styles/github-dark.css';
 import { cn } from '@/lib/utils';
 

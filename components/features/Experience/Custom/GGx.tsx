@@ -1,4 +1,4 @@
-import { Button } from "./ui/button";
+import { Button } from "../../../ui/button";
 import { FileText, Github, Link2 } from "lucide-react";
 
 export default function GGx() {

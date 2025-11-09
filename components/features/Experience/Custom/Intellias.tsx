@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Tabs, TabsList, TabsTrigger, TabsContent, TabsContents } from "./animate-ui/components/animate/tabs";
+import { Tabs, TabsList, TabsTrigger, TabsContent, TabsContents } from "../../../animate-ui/components/animate/tabs";
 import { Map, Route } from "lucide-react";
 
 export default function Intellias() {

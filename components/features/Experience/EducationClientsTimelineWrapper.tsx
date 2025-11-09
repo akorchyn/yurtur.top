@@ -1,6 +1,6 @@
 import EducationClientsTimeline from './EducationClientsTimeline';
-import educationClientData from '../public/education_client_data.json';
-import DevHub from './DevHub';
+import educationClientData from '../../../public/education_client_data.json';
+import DevHub from './Custom/DevHub';
 
 interface TimelineType {
     id: string;

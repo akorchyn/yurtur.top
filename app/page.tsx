@@ -1,6 +1,6 @@
 import Technologies from '@/components/Technologies';
 import BubbleTimeline from '@/components/BubbleTimeline';
-import EducationClientsTimelineWrapper from '@/components/EducationClientsTimelineWrapper';
+import EducationClientsTimelineWrapper from '@/components/features/Experience/EducationClientsTimelineWrapper';
 
 export default function Home() {
   return (

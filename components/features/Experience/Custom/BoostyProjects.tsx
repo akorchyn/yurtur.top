@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Tabs, TabsList, TabsTrigger, TabsContent, TabsContents } from "./animate-ui/components/animate/tabs";
-import { Button } from "./ui/button";
+import { Tabs, TabsList, TabsTrigger, TabsContent, TabsContents } from "../../../animate-ui/components/animate/tabs";
+import { Button } from "../../../ui/button";
 
 export default function BoostyProjects() {
     const [activeTab, setActiveTab] = useState('tricorn');

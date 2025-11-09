@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Tabs, TabsList, TabsTrigger, TabsContent, TabsContents } from "./animate-ui/components/animate/tabs";
-import { Button } from "./ui/button";
-import { Vote, Shield, Cpu } from "lucide-react";
+import { Tabs, TabsList, TabsTrigger, TabsContent, TabsContents } from "../../../animate-ui/components/animate/tabs";
+import { Button } from "../../../ui/button";
+import { Vote, Shield, Lock, Cpu, Zap, FlaskConical } from "lucide-react";
 
 export default function NDC() {
     const [activeTab, setActiveTab] = useState('voting-mechanism');
@@ -9,9 +9,9 @@ export default function NDC() {
     return (
         <div className="space-y-4">
             {/* Role Overview Card */}
-            <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+            <div className="bg-gradient-to-r from-indigo-50 to-violet-50 rounded-lg p-4 border border-indigo-200">
                 <div className="flex items-center gap-2 mb-2">
-                    <Vote className="w-5 h-5 text-gray-700" />
+                    <Vote className="w-5 h-5 text-indigo-600" />
                     <h3 className="font-semibold text-gray-800">NDC Operations Team</h3>
                 </div>
                 <p className="text-sm text-gray-600">
@@ -35,33 +35,37 @@ export default function NDC() {
                     {/* Private Voting Mechanism Tab */}
                     <TabsContent value="voting-mechanism" className="space-y-4 mt-4">
                         {/* Header */}
-                        <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                        <div className="bg-violet-50 rounded-lg p-4 border border-violet-200">
                             <h4 className="font-bold text-gray-800 mb-2">Privacy-Preserving Governance</h4>
                             <p className="text-sm text-gray-600">
                                 Stake-weighted voting with complete anonymity. Cross-chain privacy via Secret Network.
                             </p>
                         </div>
 
-                        {/* Architecture - Two Column Layout */}
-                        <div>
-                            <h4 className="font-semibold text-sm text-gray-700 mb-3">System Architecture</h4>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <h5 className="text-xs font-medium text-gray-600 mb-2 uppercase tracking-wide">Privacy Layer</h5>
-                                    <div className="space-y-1 text-sm text-gray-600">
-                                        <div>• Secret Network integration</div>
-                                        <div>• End-to-end encryption</div>
-                                        <div>• Voter anonymity relayer</div>
-                                    </div>
+                        {/* Architecture Cards */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div className="bg-indigo-50 rounded-lg p-3 border border-indigo-200">
+                                <div className="flex items-center gap-2 mb-2">
+                                    <Lock className="w-4 h-4 text-indigo-600" />
+                                    <h5 className="font-semibold text-sm text-gray-800">Privacy Layer</h5>
                                 </div>
-                                <div>
-                                    <h5 className="text-xs font-medium text-gray-600 mb-2 uppercase tracking-wide">Voting Engine</h5>
-                                    <div className="space-y-1 text-sm text-gray-600">
-                                        <div>• On-chain snapshots</div>
-                                        <div>• Stake-weight calculations</div>
-                                        <div>• NEAR encrypted contracts</div>
-                                    </div>
+                                <ul className="text-xs text-gray-600 space-y-1">
+                                    <li>• Secret Network integration</li>
+                                    <li>• End-to-end encryption</li>
+                                    <li>• Voter anonymity relayer</li>
+                                </ul>
+                            </div>
+
+                            <div className="bg-purple-50 rounded-lg p-3 border border-purple-200">
+                                <div className="flex items-center gap-2 mb-2">
+                                    <Zap className="w-4 h-4 text-purple-600" />
+                                    <h5 className="font-semibold text-sm text-gray-800">Voting Mechanics</h5>
                                 </div>
+                                <ul className="text-xs text-gray-600 space-y-1">
+                                    <li>• On-chain snapshots</li>
+                                    <li>• Stake-weight calculations</li>
+                                    <li>• NEAR encrypted contracts</li>
+                                </ul>
                             </div>
                         </div>
 
@@ -77,7 +81,7 @@ export default function NDC() {
                         </div>
 
                         {/* Action Button */}
-                        <div className="flex flex-wrap gap-2 pt-2">
+                        <div className="flex gap-2 pt-2">
                             <Button
                                 size="sm"
                                 variant="outline"
@@ -91,44 +95,48 @@ export default function NDC() {
                     {/* ZK Research Tab */}
                     <TabsContent value="zk-research" className="space-y-4 mt-4">
                         {/* Header */}
-                        <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                        <div className="bg-gradient-to-r from-cyan-50 to-teal-50 rounded-lg p-4 border border-cyan-200">
                             <h4 className="font-bold text-gray-800 mb-2">Zero-Knowledge Reputation System</h4>
                             <p className="text-sm text-gray-600">
                                 Experimental POC. Prove ed25519 key ownership and reputation without disclosure.
                             </p>
                         </div>
 
-                        {/* Implementation - Flow Diagram Style */}
-                        <div>
-                            <h4 className="font-semibold text-sm text-gray-700 mb-3">Proof Pipeline</h4>
-                            <div className="space-y-3">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-xs font-medium text-gray-700">1</div>
-                                    <div className="flex-1">
-                                        <div className="text-sm font-medium text-gray-700">Identity Proof</div>
-                                        <div className="text-xs text-gray-600">Plonky2 ed25519 ownership + Merkle tree membership</div>
-                                    </div>
+                        {/* Technical Cards */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div className="bg-teal-50 rounded-lg p-3 border border-teal-200">
+                                <div className="flex items-center gap-2 mb-2">
+                                    <FlaskConical className="w-4 h-4 text-teal-600" />
+                                    <h5 className="font-semibold text-sm text-gray-800">ZK Architecture</h5>
                                 </div>
-                                <div className="flex items-center gap-3">
-                                    <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-xs font-medium text-gray-700">2</div>
-                                    <div className="flex-1">
-                                        <div className="text-sm font-medium text-gray-700">Proof Conversion</div>
-                                        <div className="text-xs text-gray-600">Gnark verifier → Groth16 for efficiency</div>
-                                    </div>
+                                <ul className="text-xs text-gray-600 space-y-1">
+                                    <li>• Plonky2 ed25519 proofs</li>
+                                    <li>• Merkle tree membership</li>
+                                    <li>• Threshold reputation disclosure</li>
+                                </ul>
+                            </div>
+
+                            <div className="bg-cyan-50 rounded-lg p-3 border border-cyan-200">
+                                <div className="flex items-center gap-2 mb-2">
+                                    <Cpu className="w-4 h-4 text-cyan-600" />
+                                    <h5 className="font-semibold text-sm text-gray-800">Verification Pipeline</h5>
                                 </div>
-                                <div className="flex items-center gap-3">
-                                    <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-xs font-medium text-gray-700">3</div>
-                                    <div className="flex-1">
-                                        <div className="text-sm font-medium text-gray-700">On-chain Verification</div>
-                                        <div className="text-xs text-gray-600">NEAR precompile integration for gas optimization</div>
-                                    </div>
-                                </div>
+                                <ul className="text-xs text-gray-600 space-y-1">
+                                    <li>• Gnark → Groth16 conversion</li>
+                                    <li>• On-chain verification</li>
+                                    <li>• NEAR precompile integration</li>
+                                </ul>
                             </div>
                         </div>
 
-                        {/* Status */}
-                        <div className="text-sm text-gray-500 italic">
-                            POC completed. NDC was sunset June 2024.
+                        {/* Status Card */}
+                        <div className="bg-gray-50 rounded-lg p-3 border border-gray-300">
+                            <div className="text-sm">D
+                                <p className="text-gray-700 font-medium">Research Status</p>
+                                <p className="text-gray-600 text-xs mt-1">
+                                    POC completed. NDC was sunset June 2024.
+                                </p>
+                            </div>
                         </div>
 
                         {/* Tech Stack */}
@@ -144,7 +152,7 @@ export default function NDC() {
                         </div>
 
                         {/* Action Button */}
-                        <div className="flex flex-wrap gap-2 pt-2">
+                        <div className="flex gap-2 pt-2">
                             <Button
                                 size="sm"
                                 variant="outline"

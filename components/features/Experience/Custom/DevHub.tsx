@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Tabs, TabsList, TabsTrigger, TabsContent, TabsContents } from "./animate-ui/components/animate/tabs";
-import { Button } from "./ui/button";
+import { Tabs, TabsList, TabsTrigger, TabsContent, TabsContents } from "../../../animate-ui/components/animate/tabs";
+import { Button } from "../../../ui/button";
 import Link from "next/link";
 import { Code2, Briefcase, Trophy, Package } from "lucide-react";
 
