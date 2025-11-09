@@ -20,7 +20,6 @@ export interface TimelineType {
     website: string;
     image_url: string;
     type: string;
-    is_education: boolean;
     company?: string;
     via?: string;
     tags?: string;
@@ -92,9 +91,6 @@ export default function EducationClientsTimeline({ data, }: EducationClientsTime
             return elementTags.some(tag => selectedTags.has(tag));
         });
 
-    const careerData = filteredData.filter(item => !item.is_education);
-    const educationData = filteredData.filter(item => item.is_education);
-
     const renderTimelineItem = (element: TimelineType) => {
         const suffix = (() => {
             if (element.company && element.via) {
@@ -157,7 +153,7 @@ export default function EducationClientsTimeline({ data, }: EducationClientsTime
                             className="my-masonry-grid"
                             columnClassName="my-masonry-grid_column"
                         >
-                            {careerData.map(renderTimelineItem)}
+                            {filteredData.map(renderTimelineItem)}
                         </Masonry>
                     </TabsContent>
                     <TabsContent value="education">

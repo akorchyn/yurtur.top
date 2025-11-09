@@ -11,7 +11,6 @@ interface TimelineType {
     website: string;
     image_url: string;
     type: string;
-    is_education: boolean;
     company?: string;
     via?: string;
     tags?: string;
