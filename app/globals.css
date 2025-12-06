@@ -246,21 +246,4 @@
     margin-bottom: 20px;
     position: relative;
   }
-
-  /* Timeline connector line for each column */
-  .my-masonry-grid_column::before {
-    content: '';
-    position: absolute;
-    left: 23px; /* Align with the timeline dots */
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom,
-      var(--primary) 0%,
-      var(--primary) 50%,
-      transparent 100%
-    );
-    opacity: 0.2;
-    z-index: 0;
-  }
 }
