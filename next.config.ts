@@ -1,9 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
-  distDir: 'docs'
-
+  // Removed static export to support API routes and database connectivity
 };
 
 export default nextConfig;

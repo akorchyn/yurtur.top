@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Experience {
+  id          String   @id
+  position    String
+  company     String
+  via         String?
+  startedYear Int
+  endedYear   Int?
+  timeline    String
+  type        String
+  description String
+  url         String
+  website     String
+  imageUrl    String
+  tags        String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model TimelineEntry {
+  id          Int      @id @default(autoincrement())
+  year        String
+  title       String
+  description String
+  icon        String
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Technology {
+  id          Int      @id @default(autoincrement())
+  title       String
+  src         String
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
